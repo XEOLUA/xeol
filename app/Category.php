@@ -1,0 +1,19 @@
+<?php
+
+namespace App;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Category extends Authenticatable
+{
+    use \SleepingOwl\Admin\Traits\OrderableModel;
+    protected $table = 'categories';
+    protected $fillable = ['title'];
+
+    public function getOrderField()
+    {
+        return 'order';
+    }
+}
