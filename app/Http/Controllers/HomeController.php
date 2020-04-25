@@ -27,9 +27,10 @@ class HomeController extends Controller
         return view('index');
     }
     public function lessons(){
+        $categories = Category::with('categoriesCount')->where(['parent_id'=>0,'active'=>1])->orderBy('order')->get();
 
         return view('lessons',[
-            'categories' => Category::where(['parent_id'=>0,'active'=>1])->orderBy('order')->get(),
+            'categories' => $categories,
         ]);
     }
 }
