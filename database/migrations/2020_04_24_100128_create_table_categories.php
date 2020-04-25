@@ -19,7 +19,7 @@ class CreateTableCategories extends Migration
             $table->string('title',1000);
             $table->text('description')->nullable();
             $table->integer('order')->default(0);
-            $table->integer('active')->default(1);
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
 

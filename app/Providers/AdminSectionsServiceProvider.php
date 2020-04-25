@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Lesson;
 use App\Navigation;
 use App\User;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
@@ -17,6 +18,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         User::class => 'App\Http\Sections\Users',
         Navigation::class => 'App\Http\Sections\Navigates',
         Category::class => 'App\Http\Sections\Categories',
+        Lesson::class => 'App\Http\Sections\Lessons',
     ];
 
     /**
