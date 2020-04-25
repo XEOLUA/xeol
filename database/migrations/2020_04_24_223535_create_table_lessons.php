@@ -13,11 +13,21 @@ class CreateTableLessons extends Migration
      */
     public function up()
     {
-        Schema::create('table_lessons', function (Blueprint $table) {
+        Schema::create('lessons', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
+            $table->string('title',1000);
+            $table->text('text')->nullable();
+            $table->string('image',1000)->nullable();
+            $table->string('author')->nullable();
+            $table->integer('level')->default(0)->nullable();
+            $table->integer('view')->default(0)->nullable();
+            $table->boolean('solution')->default(0)->nullable();
             $table->timestamps();
+
+            $table->unique(['id']);
         });
+
+        Artisan::call('db:seed', array('--class' => 'AddDataToTableLessons'));
     }
 
     /**
@@ -27,6 +37,6 @@ class CreateTableLessons extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_lessons');
+        Schema::dropIfExists('lessons');
     }
 }
