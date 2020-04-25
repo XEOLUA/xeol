@@ -2,6 +2,7 @@
 <section class="section section-lg bg-default section-lined">
 
     @foreach($categories as $item)
+    @if(count($item['relCategoryToLesson'])>0)
     <div class="container">
         <div class="row row-30 align-items-center">
             <div class="col-sm-12 col-lg-4">
@@ -16,25 +17,37 @@
                 <div class="block-2-custom">
                     <div class="counter-minimal">
                         <div class="counter-left">
-                            <div class="counter">{{$item->getCategoriesCountAttribute()}}</div>
+                            <div class="counter">{{count($item['relCategoryToLesson'])}}</div>
                         </div>
                         <div class="counter-right">
                             <div class="postfix">+</div>
-                            <div class="title">International awards</div>
+                            <div class="title">Матеріали та відеоуроки</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="box-border-wrap-1 wow fadeInUp" data-wow-delay="0.2s">
-            <div class="row"><a class="col-6 col-md-4 box-border" href="#">
-                    <div class="title">Award #1</div><img src="images/brand-12-121x99.png" alt="" width="121" height="99"/></a><a class="col-6 col-md-4 box-border" href="#">
-                    <div class="title">Award #2</div><img src="images/brand-13-124x98.png" alt="" width="124" height="98"/></a><a class="col-6 col-md-4 box-border" href="#">
-                    <div class="title">Award #3</div><img src="images/brand-14-131x112.png" alt="" width="131" height="112"/></a><a class="col-6 col-md-4 box-border" href="#">
-                    <div class="title">Award #4</div><img src="images/brand-15-146x68.png" alt="" width="146" height="68"/></a><a class="col-6 col-md-4 box-border" href="#">
-                    <div class="title">Award #5</div><img src="images/brand-16-111x99.png" alt="" width="111" height="99"/></a><a class="col-6 col-md-4 box-border" href="#">
-                    <div class="icon icon-sm mdi mdi-arrow-right"></div></a></div>
+            <div class="row">
+                @foreach($item['relCategoryToLesson'] as $lesson)
+                    @if($loop->index<5)
+                    <a class="col-6 col-md-4 box-border" href="lesson/{{$lesson->id}}">
+                        <div class="title">{{$lesson->title ?? "Урок - N"}}</div>
+                        <img src="{{url($lesson->image ?? 'images/brand-12-121x99.png')}}" alt="" width="121" height="99"/>
+                    </a>
+                    @endif
+                        @endforeach
+{{--                @for($i=1;$i<=5-count($item['relCategoryToLesson']);$i++)--}}
+{{--                        <a class="col-6 col-md-4 box-border" href="#">--}}
+{{--                         <div  style="height: 120px"></div></a>--}}
+{{--                @endfor--}}
+                <a class="col-6 col-md-4 box-border" href="#strelka">
+                    <div class="icon icon-sm mdi mdi-arrow-right"></div>
+                </a>
+
+            </div>
         </div>
     </div>
+    @endif
     @endforeach
 </section>

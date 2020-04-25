@@ -17,29 +17,29 @@ class Category extends Authenticatable
         return $this->hasMany('App\Incategory', 'category_id', 'id');
     }
 
-    public function categoriesCount()
-    {
-        return $this->hasOne('App\Incategory')
-            ->selectRaw('category_id, count(*) as cnt')
-            ->groupBy('category_id');
-    }
-
-    public function getCategoriesCountAttribute()
-    {
-        // if relation is not loaded already, let's do it first
-        if ( ! array_key_exists('categoriesCount', $this->relations))
-            $this->load('categoriesCount');
-
-        $related = $this->getRelation('categoriesCount');
-
-        // then return the count directly
-        return ($related) ? (int) $related->cnt : 0;
-    }
+//    public function categoriesCount()
+//    {
+//        return $this->hasOne('App\Incategory')
+//            ->selectRaw('category_id, count(*) as cnt')
+//            ->groupBy('category_id');
+//    }
+//
+//    public function getCategoriesCountAttribute()
+//    {
+//        // if relation is not loaded already, let's do it first
+//        if ( ! array_key_exists('categoriesCount', $this->relations))
+//            $this->load('categoriesCount');
+//
+//        $related = $this->getRelation('categoriesCount');
+//
+//        // then return the count directly
+//        return ($related) ? (int) $related->cnt : 0;
+//    }
 
 
     public function relCategoryToLesson()
     {
-        return $this->belongsToMany('App\Lesson');
+        return $this->belongsToMany('App\Lesson','incategories');
     }
 
     public function getOrderField()
