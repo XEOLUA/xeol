@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Incategory;
 use App\Lesson;
 use App\Navigation;
 use App\User;
@@ -19,6 +20,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         Navigation::class => 'App\Http\Sections\Navigates',
         Category::class => 'App\Http\Sections\Categories',
         Lesson::class => 'App\Http\Sections\Lessons',
+        Incategory::class => 'App\Http\Sections\LessonsInCategory',
     ];
 
     /**

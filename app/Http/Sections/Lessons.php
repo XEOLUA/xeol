@@ -8,8 +8,10 @@ use AdminColumn;
 use AdminForm;
 use AdminFormElement;
 use AdminColumnFilter;
+use App\Category;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
+use SleepingOwl\Admin\Form\Columns\Column;
 use SleepingOwl\Admin\Section;
 use Illuminate\Database\Eloquent\Model;
 use SleepingOwl\Admin\Contracts\Initializable;
@@ -19,13 +21,13 @@ use SleepingOwl\Admin\Form\Buttons\Cancel;
 use SleepingOwl\Admin\Form\Buttons\SaveAndCreate;
 
 /**
- * Class Categories
+ * Class Lessons
  *
- * @property \App\Category $model
+ * @property \App\Lesson $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class Categories extends Section implements Initializable
+class Lessons extends Section implements Initializable
 {
     /**
      * @var bool
@@ -35,7 +37,7 @@ class Categories extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = "Категорії";
+    protected $title="Уроки";
 
     /**
      * @var string
@@ -47,7 +49,7 @@ class Categories extends Section implements Initializable
      */
     public function initialize()
     {
-        $this->addToNavigation()->setPriority(100)->setIcon('fas fa-folder-open');
+        $this->addToNavigation()->setPriority(100)->setIcon('fas fa-chalkboard-teacher');
     }
 
     /**
@@ -57,13 +59,18 @@ class Categories extends Section implements Initializable
      */
     public function onDisplay($payload = [])
     {
+
+        $categories=Category::select('id','title')->get()->pluck('title','id')->toArray();
+//        $category = Category::find([3, 4]);
+//        $product->categories()->attach($category);
+
         $columns = [
             AdminColumn::text('id', '#')->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
             AdminColumnEditable::text('title')->setLabel('Заголовок'),
-            AdminColumnEditable::text('description')->setLabel('Опис'),
-            AdminColumn::count('relCategoryToIncategory', 'Уроків')->setWidth('90px'),
-            AdminColumnEditable::checkbox('active','Опубліковано')->setWidth('150px'),
-            AdminColumn::order('order')->setLabel('Порядок')->setWidth('90px'),
+            AdminColumn::count('relLessonToIncategory', 'В категоріях')->setWidth('130px'),
+            AdminColumn::lists('relLessonToCategory.title', 'Категорії'),
+            AdminColumnEditable::text('level','Складність')->setWidth('100px'),
+            AdminColumn::text('view','Переглядів')->setWidth('110px'),
             AdminColumn::text('created_at', 'Created / updated', 'updated_at')
                 ->setWidth('160px')
                 ->setOrderable(function($query, $direction) {
@@ -71,15 +78,11 @@ class Categories extends Section implements Initializable
                 })
                 ->setSearchable(false)
             ,
-
         ];
 
         $display = AdminDisplay::datatables()
             ->setName('firstdatatables')
-            ->setApply(function ($query) {
-                $query->orderBy('order', 'asc');
-            })
-//            ->setOrder([[4, 'asc']])
+            ->setOrder([[0, 'asc']])
             ->setDisplaySearch(true)
             ->paginate(25)
             ->setColumns($columns)
@@ -110,10 +113,13 @@ class Categories extends Section implements Initializable
      */
     public function onEdit($id = null, $payload = [])
     {
+        $categories=Category::select('id','title')->get()->pluck('title','id')->toArray();
+
         $form = AdminForm::card()->addBody([
             AdminFormElement::columns()->addColumn([
                 AdminFormElement::text('title', 'title')
-                    ->required(),
+                    ->required()
+                ,
                 AdminFormElement::html('<hr>'),
                 AdminFormElement::datetime('created_at')
                     ->setVisible(true)
@@ -123,7 +129,21 @@ class Categories extends Section implements Initializable
             ], 'col-xs-12 col-sm-6 col-md-4 col-lg-4')->addColumn([
                 AdminFormElement::text('id', 'ID')->setReadonly(true),
                 AdminFormElement::html('last AdminFormElement without comma')
-            ], 'col-xs-12 col-sm-6 col-md-8 col-lg-8'),
+            ], 'col-xs-12 col-sm-6 col-md-8 col-lg-8')->addColumn(function () use($categories) {
+                return [
+                    AdminFormElement::hasMany('relLessonToIncategory', [
+                        AdminFormElement::select('category_id')->setLabel('Тип питання')
+                            ->setOptions($categories)
+                            ->setDisplay('Тип'),
+
+//                                ->setTitle('Оберіть тип:')
+
+                        AdminFormElement::checkbox('active','Видимість')
+                        ,
+//                        AdminFormElement::image('image','Зображення'),
+                    ]),
+                ];
+            },'col-xs-12 col-sm-6 col-md-8 col-lg-9'),
         ]);
 
         $form->getButtons()->setButtons([

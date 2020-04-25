@@ -12,6 +12,16 @@ class Category extends Authenticatable
     protected $table = 'categories';
     protected $fillable = ['title'];
 
+    public function relCategoryToIncategory()
+    {
+        return $this->hasMany('App\Incategory', 'category_id', 'id');
+    }
+
+    public function relCategoryToLesson()
+    {
+        return $this->belongsToMany('App\Lesson');
+    }
+
     public function getOrderField()
     {
         return 'order';
