@@ -31,7 +31,7 @@
             <div class="row">
                 @foreach($item['relCategoryToLesson'] as $lesson)
                     @if($loop->index<5)
-                    <a class="col-6 col-md-4 box-border" href="lesson/{{$lesson->id}}">
+                    <a class="col-6 col-md-4 box-border" href="lesson/{{$lesson->id}}7777">
                         <div class="title">{{$lesson->title ?? "Урок - N"}}</div>
                         <img src="{{url($lesson->image ?? 'images/brand-12-121x99.png')}}" alt="" width="121" height="99"/>
                     </a>
