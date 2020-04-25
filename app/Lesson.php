@@ -10,5 +10,13 @@ class Lesson extends Authenticatable
 {
     protected $table = 'lessons';
     protected $fillable = ['title'];
+    public function relLessonToIncategory()
+    {
+        return $this->hasMany('App\Incategory', 'lesson_id', 'id');
+    }
 
+    public function relLessonToCategory()
+    {
+        return $this->belongsToMany('App\Category','incategories');
+    }
 }

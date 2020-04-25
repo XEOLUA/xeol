@@ -2,7 +2,6 @@
 
 namespace App\Http\Sections;
 
-use AdminColumnEditable;
 use AdminDisplay;
 use AdminColumn;
 use AdminForm;
@@ -19,13 +18,13 @@ use SleepingOwl\Admin\Form\Buttons\Cancel;
 use SleepingOwl\Admin\Form\Buttons\SaveAndCreate;
 
 /**
- * Class Categories
+ * Class LessonsInCategory
  *
- * @property \App\Category $model
+ * @property \App\Incategory $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class Categories extends Section implements Initializable
+class LessonsInCategory extends Section implements Initializable
 {
     /**
      * @var bool
@@ -35,7 +34,7 @@ class Categories extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = "Категорії";
+    protected $title;
 
     /**
      * @var string
@@ -47,7 +46,7 @@ class Categories extends Section implements Initializable
      */
     public function initialize()
     {
-        $this->addToNavigation()->setPriority(100)->setIcon('fas fa-folder-open');
+        $this->addToNavigation()->setPriority(100)->setIcon('fa fa-lightbulb-o');
     }
 
     /**
@@ -59,11 +58,11 @@ class Categories extends Section implements Initializable
     {
         $columns = [
             AdminColumn::text('id', '#')->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
-            AdminColumnEditable::text('title')->setLabel('Заголовок'),
-            AdminColumnEditable::text('description')->setLabel('Опис'),
-            AdminColumn::count('relCategoryToIncategory', 'Уроків')->setWidth('90px'),
-            AdminColumnEditable::checkbox('active','Опубліковано')->setWidth('150px'),
-            AdminColumn::order('order')->setLabel('Порядок')->setWidth('90px'),
+
+            AdminColumn::text('relToLesson.title', 'Урок')->setWidth('90px'),
+            AdminColumn::text('relToCategory.title', 'Тема')->setWidth('90px'),
+
+            AdminColumn::boolean('name', 'On'),
             AdminColumn::text('created_at', 'Created / updated', 'updated_at')
                 ->setWidth('160px')
                 ->setOrderable(function($query, $direction) {
@@ -71,15 +70,11 @@ class Categories extends Section implements Initializable
                 })
                 ->setSearchable(false)
             ,
-
         ];
 
         $display = AdminDisplay::datatables()
             ->setName('firstdatatables')
-            ->setApply(function ($query) {
-                $query->orderBy('order', 'asc');
-            })
-//            ->setOrder([[4, 'asc']])
+            ->setOrder([[0, 'asc']])
             ->setDisplaySearch(true)
             ->paginate(25)
             ->setColumns($columns)
@@ -88,7 +83,7 @@ class Categories extends Section implements Initializable
 
         $display->setColumnFilters([
             AdminColumnFilter::select()
-                ->setModelForOptions(\App\Category::class, 'name')
+                ->setModelForOptions(\App\Incategory::class, 'name')
                 ->setLoadOptionsQueryPreparer(function($element, $query) {
                     return $query;
                 })
@@ -112,8 +107,9 @@ class Categories extends Section implements Initializable
     {
         $form = AdminForm::card()->addBody([
             AdminFormElement::columns()->addColumn([
-                AdminFormElement::text('title', 'title')
-                    ->required(),
+                AdminFormElement::text('name', 'Name')
+                    ->required()
+                ,
                 AdminFormElement::html('<hr>'),
                 AdminFormElement::datetime('created_at')
                     ->setVisible(true)
