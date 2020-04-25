@@ -61,8 +61,8 @@ class Categories extends Section implements Initializable
             AdminColumn::text('id', '#')->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
             AdminColumnEditable::text('title')->setLabel('Заголовок'),
             AdminColumnEditable::text('description')->setLabel('Опис'),
-            AdminColumn::count('relCategoryToIncategory', 'Уроків')->setWidth('90px'),
-            AdminColumnEditable::checkbox('active','Опубліковано')->setWidth('150px'),
+            AdminColumn::count('relCategoryToIncategory', 'Уроків')->setWidth('90px')->setHtmlAttribute('align','center'),
+            AdminColumnEditable::checkbox('active','Опубліковано')->setCheckedLabel('Так')->setHtmlAttribute('align','center'),
             AdminColumn::order('order')->setLabel('Порядок')->setWidth('90px'),
             AdminColumn::text('created_at', 'Created / updated', 'updated_at')
                 ->setWidth('160px')

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Incategory;
+use App\Lesson;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,7 +29,12 @@ class HomeController extends Controller
         return view('index');
     }
     public function lessons(){
-        $categories = Category::with('categoriesCount')->where(['parent_id'=>0,'active'=>1])->orderBy('order')->get();
+//        $categories = Category::with('categoriesCount')->where(['parent_id'=>0,'active'=>1])->orderBy('order')->get();
+//
+//        $lessons = Incategory::with('relToLesson')->get();
+//        $keyed = $lessons->groupBy('category_id');
+
+        $categories = Category::with('relCategoryToLesson')->get();
 
         return view('lessons',[
             'categories' => $categories,
