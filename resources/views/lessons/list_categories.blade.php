@@ -16,7 +16,7 @@
                 <div class="block-2-custom">
                     <div class="counter-minimal">
                         <div class="counter-left">
-                            <div class="counter">17</div>
+                            <div class="counter">{{$item->getCategoriesCountAttribute()}}</div>
                         </div>
                         <div class="counter-right">
                             <div class="postfix">+</div>
