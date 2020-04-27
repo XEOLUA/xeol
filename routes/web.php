@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/lessons', 'HomeController@lessons')->name('lessons');
+Route::get('/lesson/{lesson_id}', 'HomeController@lesson')->name('lesson');
+Route::get('/category/{category_id}', 'HomeController@category')->name('category');
 
 View::composer('home.header', function($view)
 {

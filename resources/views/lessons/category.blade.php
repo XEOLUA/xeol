@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row row-30 align-items-center">
             <div class="col-sm-12 col-lg-4">
-                <a href="/category/{{$item->id}}"><h3>{{$item->title ?? 'title of categories'}}</h3></a>
+                <h3>{{$item->title ?? 'title of categories'}}</h3>
             </div>
             <div class="col-sm-6 col-lg-4">
                 <div class="big block-1-custom">
@@ -30,28 +30,24 @@
         <div class="box-border-wrap-1 wow fadeInUp" data-wow-delay="0.2s">
             <div class="row">
                 @foreach($item['relCategoryToLesson'] as $lesson)
-                    @if($loop->index<5)
+{{--                    @if($loop->index<8)--}}
                     <a class="col-6 col-md-4 box-border" href="/lesson/{{$lesson->id}}">
                         <div class="title">{{$lesson->title ?? "Урок - N"}}</div>
                         <img src=@if($lesson->image)
-                         {{url($lesson->image)}}
-                            @else
-                                @if(\App\Services\GetUrlYoutube::geturl($lesson->text)!='')
-                            {{'https://img.youtube.com/vi/'.\App\Services\GetUrlYoutube::geturl($lesson->text).'/0.jpg'}}
-                                @else
+                        {{url($lesson->image)}}
+                        @else
+                        @if(\App\Services\GetUrlYoutube::geturl($lesson->text)!='')
+                        {{'https://img.youtube.com/vi/'.\App\Services\GetUrlYoutube::geturl($lesson->text).'/0.jpg'}}
+                        @else
                         {{url('images/brand-12-121x99.png')}}
-                                @endif
+                        @endif
                         @endif alt="" width="121" height="99"/>
                     </a>
-                    @endif
+{{--                    @endif--}}
                         @endforeach
-{{--                @for($i=1;$i<=5-count($item['relCategoryToLesson']);$i++)--}}
-{{--                        <a class="col-6 col-md-4 box-border" href="#">--}}
-{{--                         <div  style="height: 120px"></div></a>--}}
-{{--                @endfor--}}
-                <a class="col-6 col-md-4 box-border" href="/category/{{$item->id}}">
-                    <div class="icon icon-sm mdi mdi-arrow-right"></div>
-                </a>
+{{--                <a class="col-6 col-md-4 box-border" href="/category/{{$categories[0]->id}}/page/{{}}">--}}
+{{--                    <div class="icon icon-sm mdi mdi-arrow-right"></div>--}}
+{{--                </a>--}}
 
             </div>
         </div>

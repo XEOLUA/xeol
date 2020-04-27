@@ -71,7 +71,7 @@ class Lessons extends Section implements Initializable
             AdminColumn::lists('relLessonToCategory.title', 'Категорії'),
             AdminColumnEditable::text('level','Складність')->setWidth('100px')->setHtmlAttribute('align','center'),
             AdminColumnEditable::text('author','Автор')->setWidth('100px'),
-            AdminColumn::text('view','Переглядів')->setWidth('110px')->setHtmlAttribute('align','center'),
+            AdminColumnEditable::text('view','Переглядів')->setWidth('110px')->setHtmlAttribute('align','center'),
             AdminColumn::image('image','Зображення')->setWidth('110px'),
             AdminColumnEditable::checkbox('solution',"Пояснення")->setWidth('150px')->setCheckedLabel('Так')->setHtmlAttribute('align','center'),
             AdminColumn::text('created_at', 'Created / updated', 'updated_at')
@@ -126,7 +126,7 @@ class Lessons extends Section implements Initializable
                     AdminFormElement::image('image', 'Зображення'),
                 ],'col-xs-8 col-sm-6 col-md-8 col-lg-4' )->addColumn([
                     AdminFormElement::text('author', 'Автор'),
-                    AdminFormElement::text('level', 'Складність'),
+                    AdminFormElement::number('level', 'Складність'),
                     AdminFormElement::checkbox('solution', 'Розв\'язок'),
                 ],
                     'col-xl-3 col-lg-6 col-md-8 col-3' ),
@@ -144,8 +144,6 @@ class Lessons extends Section implements Initializable
                         AdminFormElement::select('category_id')->setLabel('Категорія')
                             ->setOptions($categories)
                             ->setDisplay('Тип'),
-                        AdminFormElement::checkbox('active','Видимість')
-                        ,
 //                        AdminFormElement::image('image','Зображення'),
                     ]),
                 ];

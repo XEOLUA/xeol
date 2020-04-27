@@ -17,7 +17,7 @@ class CreateIncategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('lesson_id')->unsigned();
-            $table->boolean('active')->default(1)->nullable();
+//            $table->boolean('active')->default(1)->nullable();
             $table->timestamps();
 
             $table->unique(['id']);
