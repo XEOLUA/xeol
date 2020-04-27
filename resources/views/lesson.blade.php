@@ -7,7 +7,7 @@
     @include('home.preloader')
     <div class="page">
     @include('home.header')
-    @include('lessons.list_categories')
+    @include('lessons.lesson')
     @include('home.footer')
     </div>
 @endsection
