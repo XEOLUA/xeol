@@ -16,4 +16,29 @@ class GetUrlYoutube
          if ($pe!=false) $src=substr($s, $pe+6, 11);  else $src='';
      return $src;
  }
+
+
+ public static function youtubeinfo($video_id){
+     $api_key='AIzaSyBAZg45J-HRBJtiOaBy8yIzIPGmzEHpkrI';
+     $json_result = file_get_contents("https://www.googleapis.com/youtube/v3/videos?part=statistics&id=$video_id&key=$api_key");
+     $obj = json_decode($json_result);
+
+     $views= $obj->items[0]->statistics->viewCount;
+     $likes = $obj->items[0]->statistics->likeCount;
+     $dislikes = $obj->items[0]->statistics->dislikeCount;
+
+     $json_result = file_get_contents("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=$video_id&key=$api_key");
+     $obj = json_decode($json_result);
+
+     $date = $obj->items[0]->snippet->publishedAt;
+
+     $inf=[
+         'views'=>$views,
+         'likes'=>$likes,
+         'dislikes'=>$dislikes,
+         'created_at'=>$date
+         ];
+
+     return $inf;
+ }
 }

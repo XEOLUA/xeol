@@ -31,8 +31,11 @@
             <div class="row">
                 @foreach($item['relCategoryToLesson'] as $lesson)
 {{--                    @if($loop->index<8)--}}
-                    <a class="col-6 col-md-4 box-border" href="/lesson/{{$lesson->id}}">
-                        <div class="title">{{$lesson->title ?? "Урок - N"}}</div>
+                    <a class="col-6 col-md-4 box-border" href="/lesson/{{$lesson->id}}/category/{{$item->id}}">
+                        <div class="title">
+                            {{$lesson->title ?? "Урок - N"}}
+                            <div>Переглядів: {{$lesson->view}}</div>
+                        </div>
                         <img src=@if($lesson->image)
                         {{url($lesson->image)}}
                         @else
