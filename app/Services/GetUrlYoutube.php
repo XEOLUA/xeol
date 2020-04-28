@@ -23,13 +23,23 @@ class GetUrlYoutube
      $json_result = file_get_contents("https://www.googleapis.com/youtube/v3/videos?part=statistics&id=$video_id&key=$api_key");
      $obj = json_decode($json_result);
 
-     $views= $obj->items[0]->statistics->viewCount;
-     $likes = $obj->items[0]->statistics->likeCount;
-     $dislikes = $obj->items[0]->statistics->dislikeCount;
+     $views=0;
+     $likes=0;
+     $dislikes=0;
+     $date='';
+
+     if(isset($obj->items[0])){
+         $views= $obj->items[0]->statistics->viewCount;
+         $likes = $obj->items[0]->statistics->likeCount;
+         $dislikes = $obj->items[0]->statistics->dislikeCount;
+     }
+
+
 
      $json_result = file_get_contents("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=$video_id&key=$api_key");
      $obj = json_decode($json_result);
 
+     if(isset($obj->items[0]))
      $date = $obj->items[0]->snippet->publishedAt;
 
      $inf=[

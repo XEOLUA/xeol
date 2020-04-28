@@ -67,9 +67,13 @@ class HomeController extends Controller
             'created_at'=>0
         ];
 
+
+
         if($video_id!=''){
             $video_inf = GetUrlYoutube::youtubeinfo($video_id);
-            $lesson->view = $video_inf['views'];
+
+            if($video_inf['views']==0) $lesson->view++;
+             else $lesson->view = $video_inf['views'];
 
             if($lesson->image==null){
                 $lesson->image='https://img.youtube.com/vi/'.$video_id.'/0.jpg';

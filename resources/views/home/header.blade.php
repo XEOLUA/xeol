@@ -21,7 +21,7 @@
                         <!-- RD Navbar Nav-->
                         <ul class="rd-navbar-nav">
                             @foreach($nav as $item)
-                                <li class="rd-nav-item active">
+                                <li class="rd-nav-item">
                                     <a class="rd-nav-link" href="/{{$item->link}}">{{$item->title}}</a>
                                 </li>
                             @endforeach
