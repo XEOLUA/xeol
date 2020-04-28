@@ -227,6 +227,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'geturl' => App\Services\GetUrlYoutube::class,
+        'youtubeinfo' => App\Services\GetUrlYoutube::class,
     ],
 
 ];

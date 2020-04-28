@@ -31,8 +31,15 @@
             <div class="row">
                 @foreach($item['relCategoryToLesson'] as $lesson)
                     @if($loop->index<5)
-                    <a class="col-6 col-md-4 box-border" href="/lesson/{{$lesson->id}}">
-                        <div class="title">{{$lesson->title ?? "Урок - N"}}</div>
+                    <a class="col-6 col-md-4 box-border" href="/lesson/{{$lesson->id}}/category/{{$item->id}}">
+                        <div class="title"
+                             style="
+                             text-shadow: 1px 1px 2px black, 0 0 1em white;
+    color: silver;
+                                "
+                        >{{$lesson->title ?? "Урок - N"}}
+                            <div>Переглядів: {{$lesson->view}}</div>
+                        </div>
                         <img src=@if($lesson->image)
                          {{url($lesson->image)}}
                             @else
@@ -44,6 +51,10 @@
                         @endif alt="" width="121" height="99"/>
                     </a>
                     @endif
+{{--                        @if(\App\Services\GetUrlYoutube::geturl($lesson->text)!='')--}}
+{{--                            Переглядів: {{\App\Services\GetUrlYoutube::youtubeinfo(\App\Services\GetUrlYoutube::geturl($lesson->text))['views']}}--}}
+{{--                        @endif--}}
+
                         @endforeach
 {{--                @for($i=1;$i<=5-count($item['relCategoryToLesson']);$i++)--}}
 {{--                        <a class="col-6 col-md-4 box-border" href="#">--}}
