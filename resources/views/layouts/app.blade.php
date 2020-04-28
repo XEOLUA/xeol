@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 {{--    <link rel="icon" href="images/favicon.ico" type="image/x-icon">--}}
-    <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{url('css/app.css')}}">
     <link rel="icon" href="{{url('images/favicon.ico?v=2')}}" type={{url("image/x-icon")}}>
     <link rel="stylesheet" type="text/css" href={{url("//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900")}}>
 {{--    <link rel="stylesheet" href="{{url('css/bootstrap.css')}}">--}}
