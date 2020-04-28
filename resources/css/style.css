@@ -108,7 +108,11 @@ html p a:hover {
 * Typography
 */
 body {
+<<<<<<< HEAD
 	font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+=======
+	font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif!important;
+>>>>>>> master
 	font-size: 15px;
 	line-height: 1.66667;
 	font-weight: 300;
@@ -9515,14 +9519,22 @@ button.swiper-pagination-bullet {
 	}
 }
 
+<<<<<<< HEAD
 /* 
+=======
+/*
+>>>>>>> master
  * 	Owl Carousel - Auto Height Plugin
  */
 .owl-height {
 	transition: height 500ms ease-in-out;
 }
 
+<<<<<<< HEAD
 /* 
+=======
+/*
+>>>>>>> master
  *  Core Owl Carousel CSS File
  */
 .owl-carousel {
@@ -9589,7 +9601,10 @@ button.swiper-pagination-bullet {
 
 .owl-carousel .owl-grab {
 	cursor: move;
+<<<<<<< HEAD
 	cursor: -webkit-grab;
+=======
+>>>>>>> master
 	cursor: grab;
 }
 
@@ -9606,7 +9621,11 @@ button.swiper-pagination-bullet {
 	display: block;
 }
 
+<<<<<<< HEAD
 /* 
+=======
+/*
+>>>>>>> master
  * 	Owl Carousel - Lazy Load Plugin
  */
 .owl-carousel .owl-item .owl-lazy {
@@ -9614,7 +9633,11 @@ button.swiper-pagination-bullet {
 	transition: opacity 400ms ease;
 }
 
+<<<<<<< HEAD
 /* 
+=======
+/*
+>>>>>>> master
  * 	Owl Carousel - Video Plugin
  */
 .owl-carousel .owl-video-wrapper {
@@ -10158,19 +10181,25 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item {
+<<<<<<< HEAD
 	cursor: -webkit-grab;
 	cursor: -moz-grab;
 	cursor: -o-grab;
 	cursor: -ms-grab;
+=======
+>>>>>>> master
 	cursor: grab;
 }
 
 .lg-outer .lg-thumb-outer.lg-grabbing .lg-thumb-item {
 	cursor: move;
+<<<<<<< HEAD
 	cursor: -webkit-grabbing;
 	cursor: -moz-grabbing;
 	cursor: -o-grabbing;
 	cursor: -ms-grabbing;
+=======
+>>>>>>> master
 	cursor: grabbing;
 }
 
@@ -10306,6 +10335,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-has-vimeo .lg-video-play {
+<<<<<<< HEAD
 	background: url(../images/vimeo-play.png) no-repeat;
 }
 
@@ -10315,6 +10345,17 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 
 .lg-outer .lg-has-html5 .lg-video-play {
 	background: url(../images/video-play.png) no-repeat;
+=======
+	/*background: url(../images/vimeo-play.png) no-repeat;*/
+}
+
+.lg-outer .lg-has-vimeo:hover .lg-video-play {
+	/*background: url(../images/vimeo-play.png) 0 -58px no-repeat;*/
+}
+
+.lg-outer .lg-has-html5 .lg-video-play {
+	/*background: url( ) no-repeat;*/
+>>>>>>> master
 	height: 64px;
 	margin-left: -32px;
 	margin-top: -32px;
@@ -10327,11 +10368,19 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-has-youtube .lg-video-play {
+<<<<<<< HEAD
 	background: url(../images/youtube-play.png) no-repeat;
 }
 
 .lg-outer .lg-has-youtube:hover .lg-video-play {
 	background: url(../images/youtube-play.png) 0 -60px no-repeat;
+=======
+	/*background: url(../images/youtube-play.png) no-repeat;*/
+}
+
+.lg-outer .lg-has-youtube:hover .lg-video-play {
+	/*background: url(../images/youtube-play.png) 0 -60px no-repeat;*/
+>>>>>>> master
 }
 
 .lg-outer .lg-video-object {
@@ -10749,19 +10798,25 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer.lg-grab img.lg-object {
+<<<<<<< HEAD
 	cursor: -webkit-grab;
 	cursor: -moz-grab;
 	cursor: -o-grab;
 	cursor: -ms-grab;
+=======
+>>>>>>> master
 	cursor: grab;
 }
 
 .lg-outer.lg-grabbing img.lg-object {
 	cursor: move;
+<<<<<<< HEAD
 	cursor: -webkit-grabbing;
 	cursor: -moz-grabbing;
 	cursor: -o-grabbing;
 	cursor: -ms-grabbing;
+=======
+>>>>>>> master
 	cursor: grabbing;
 }
 
@@ -10782,7 +10837,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-item {
+<<<<<<< HEAD
 	background: url(../images/loading.gif) center center no-repeat;
+=======
+>>>>>>> master
 	display: none !important;
 }
 
@@ -11228,19 +11286,26 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item {
+<<<<<<< HEAD
 	cursor: -webkit-grab;
 	cursor: -moz-grab;
 	cursor: -o-grab;
 	cursor: -ms-grab;
+=======
+
+>>>>>>> master
 	cursor: grab;
 }
 
 .lg-outer .lg-thumb-outer.lg-grabbing .lg-thumb-item {
 	cursor: move;
+<<<<<<< HEAD
 	cursor: -webkit-grabbing;
 	cursor: -moz-grabbing;
 	cursor: -o-grabbing;
 	cursor: -ms-grabbing;
+=======
+>>>>>>> master
 	cursor: grabbing;
 }
 
@@ -11374,6 +11439,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-has-vimeo .lg-video-play {
+<<<<<<< HEAD
 	background: url(../images/vimeo-play.png) no-repeat;
 }
 
@@ -11383,6 +11449,14 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 
 .lg-outer .lg-has-html5 .lg-video-play {
 	background: url(../images/video-play.png) no-repeat;
+=======
+}
+
+.lg-outer .lg-has-vimeo:hover .lg-video-play {
+}
+
+.lg-outer .lg-has-html5 .lg-video-play {
+>>>>>>> master
 	height: 64px;
 	margin-left: -32px;
 	margin-top: -32px;
@@ -11395,11 +11469,17 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-has-youtube .lg-video-play {
+<<<<<<< HEAD
 	background: url(../images/youtube-play.png) no-repeat;
 }
 
 .lg-outer .lg-has-youtube:hover .lg-video-play {
 	background: url(../images/youtube-play.png) 0 -60px no-repeat;
+=======
+}
+
+.lg-outer .lg-has-youtube:hover .lg-video-play {
+>>>>>>> master
 }
 
 .lg-outer .lg-video-object {
@@ -11817,19 +11897,25 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer.lg-grab img.lg-object {
+<<<<<<< HEAD
 	cursor: -webkit-grab;
 	cursor: -moz-grab;
 	cursor: -o-grab;
 	cursor: -ms-grab;
+=======
+>>>>>>> master
 	cursor: grab;
 }
 
 .lg-outer.lg-grabbing img.lg-object {
 	cursor: move;
+<<<<<<< HEAD
 	cursor: -webkit-grabbing;
 	cursor: -moz-grabbing;
 	cursor: -o-grabbing;
 	cursor: -ms-grabbing;
+=======
+>>>>>>> master
 	cursor: grabbing;
 }
 
