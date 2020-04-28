@@ -26,7 +26,7 @@
                     {{$lessons[0]->description ?? 'As a leading web design team, we have received multiple awards over the years.'}}
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4">
+            <div class="col-xl-4 col-lg-4 col-md-6  col-12">
                 <div class="block-2-custom">
                     <div class="counter-minimal">
                         <div class="counter-left">

@@ -31,7 +31,7 @@
             <div class="row">
                 @foreach($item['relCategoryToLesson'] as $lesson)
 {{--                    @if($loop->index<8)--}}
-                    <a class="col-6 col-md-4 box-border" href="/lesson/{{$lesson->id}}/category/{{$item->id}}">
+                    <a class="col-xl-4 col-lg-4 col-md-6 box-border" href="/lesson/{{$lesson->id}}/category/{{$item->id}}">
                         <div class="title">
                             {{$lesson->title ?? "Урок - N"}}
                             <div>Переглядів: {{$lesson->view}}</div>
