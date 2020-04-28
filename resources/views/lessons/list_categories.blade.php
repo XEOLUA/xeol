@@ -49,11 +49,11 @@
                         <span class="title">{{$lesson->title ?? "Урок - N"}}</span>
                         <div class="block_author">
                             <span class="author_desc">Автор:</span>
-                            <span class="author">Savit Oleg</span>
+                            <span class="author">{{$lesson->author ?? "Author"}}</span>
                         </div>
                         <div class="block_watch">
                             <span class="watch_desc">Переглядів:</span>
-                            <span class="watch">121454</span>
+                            <span class="watch">{{$lesson->view ?? 0}}</span>
                         </div>
                         <div class="block_star">
 {{--                            svg_silver->svg_golden--}}
