@@ -4,9 +4,9 @@
         <a href="/category/{{$lessons[0]->id}}">{{$lessons[0]->title}}</a>
     </div>
     <div class="container" style="padding: 30px">
-        <div style="text-align: center; text-transform: uppercase; font-weight: 400">
+        <h3 style="text-align: center;">
             {{$lesson->title}}
-        </div>
+        </h3>
         {!! $lesson->text !!}
         <div style="background-color: #efefef; padding: 10px; margin: 30px;">
             <div>Рівеннь складності: {{$lesson->level}}</div>
@@ -17,9 +17,9 @@
         </div>
         <div class="row row-30 align-items-center">
             <div class="col-sm-12 col-lg-4">
-                <h3>
+                <a href="/category/{{$lessons[0]->id}}"><h3>
 {{--                    {{dd($lessons)}}--}}
-                    {{$lessons[0]->title ?? 'title of categories'}}</h3>
+                    {{$lessons[0]->title ?? 'title of categories'}}</h3></a>
             </div>
             <div class="col-sm-6 col-lg-4">
                 <div class="big block-1-custom">
@@ -49,11 +49,11 @@
                             <img src=@if($les->image)
                             {{url($les->image)}}
                             @else
-                            @if(\App\Services\GetUrlYoutube::geturl($les->text)!='')
-                            {{'https://img.youtube.com/vi/'.\App\Services\GetUrlYoutube::geturl($les->text).'/0.jpg'}}
-                            @else
-                            {{url('images/brand-12-121x99.png')}}
-                            @endif
+{{--                            @if(\App\Services\GetUrlYoutube::geturl($les->text)!='')--}}
+                            {{'https://img.youtube.com/vi/'.\App\Services\GetUrlYoutube::geturl($les->text).'/0.jpg' ?? url('images/brand-12-121x99.png')}}
+{{--                            @else--}}
+{{--                            {{}}--}}
+{{--                            @endif--}}
                             @endif alt="" width="121" height="99"/>
 
                         </div>
@@ -75,6 +75,10 @@
                                     <div class="block_watch">
                                         <span class="watch_desc">Переглядів:</span>
                                         <span class="watch">{{$les->view ?? 0}}</span>
+                                    </div>
+                                    <div class="block_watch">
+                                        <span class="watch_desc">Створено:</span>
+                                        <span class="watch">{{$les->created_at ?? ''}}</span>
                                     </div>
                                 </div>
                             </div>

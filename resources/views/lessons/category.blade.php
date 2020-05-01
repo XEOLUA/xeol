@@ -36,11 +36,11 @@
                                 <img src=@if($lesson->image)
                                 {{url($lesson->image)}}
                                 @else
-                                @if(\App\Services\GetUrlYoutube::geturl($lesson->text)!='')
-                                {{'https://img.youtube.com/vi/'.\App\Services\GetUrlYoutube::geturl($lesson->text).'/0.jpg'}}
-                                @else
-                                {{url('images/brand-12-121x99.png')}}
-                                @endif
+{{--                               @if(\App\Services\GetUrlYoutube::geturl($lesson->text)!='')--}}
+                                {{'https://img.youtube.com/vi/'.\App\Services\GetUrlYoutube::geturl($lesson->text).'/0.jpg' ?? url('images/brand-12-121x99.png')}}
+{{--                                @else--}}
+{{--                                {{}}--}}
+{{--                                @endif--}}
                                 @endif alt="" width="121" height="99"/>
 
                             </div>
@@ -61,6 +61,10 @@
                                         <div class="block_watch">
                                             <span class="watch_desc">Переглядів:</span>
                                             <span class="watch">{{$lesson->view ?? 0}}</span>
+                                        </div>
+                                        <div class="block_watch">
+                                            <span class="watch_desc">Створено:</span>
+                                            <span class="watch">{{$lesson->created_at ?? ''}}</span>
                                         </div>
                                     </div>
                                 </div>

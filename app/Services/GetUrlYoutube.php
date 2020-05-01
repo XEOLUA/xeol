@@ -19,9 +19,29 @@ class GetUrlYoutube
 
 
  public static function youtubeinfo($video_id){
-     $api_key='AIzaSyBAZg45J-HRBJtiOaBy8yIzIPGmzEHpkrI';
-     $json_result = file_get_contents("https://www.googleapis.com/youtube/v3/videos?part=statistics&id=$video_id&key=$api_key");
-     $obj = json_decode($json_result);
+     $api_key=env('API_KEY');
+
+//     $client = new Google_Client();
+//     $client->setDeveloperKey($api_key);
+//
+//     $youtube = new Google_Service_YouTube($client);
+//     $youtube->videos->listVideos('snippet, statistics, contentDetails', [
+//         'id' => $video_id,
+//     ]);
+//
+//     dd($youtube);
+
+//     $json_result = file_get_contents("https://www.googleapis.com/youtube/v3/videos?part=statistics&id=$video_id&key=$api_key");
+//     $obj = json_decode($json_result);
+     $curlSession = curl_init();
+     curl_setopt($curlSession, CURLOPT_URL, "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=$video_id&key=$api_key");
+     curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+     curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+
+     $obj = json_decode(curl_exec($curlSession));
+    // curl_close($curlSession);
+
+//     dd($api_key,request()->getHttpHost(),$obj);
 
      $views=0;
      $likes=0;
@@ -34,13 +54,21 @@ class GetUrlYoutube
          $dislikes = $obj->items[0]->statistics->dislikeCount;
      }
 
+//     $json_result = file_get_contents("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=$video_id&key=$api_key");
+//     $obj = json_decode($json_result);
 
+    // $curlSession = curl_init();
+     curl_setopt($curlSession, CURLOPT_URL, "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=$video_id&key=$api_key");
+     curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+     curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
-     $json_result = file_get_contents("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=$video_id&key=$api_key");
-     $obj = json_decode($json_result);
+     $obj = json_decode(curl_exec($curlSession));
+     curl_close($curlSession);
 
-     if(isset($obj->items[0]))
+     if(isset($obj->items[0]->snippet))
      $date = $obj->items[0]->snippet->publishedAt;
+
+//     dd($date);
 
      $inf=[
          'views'=>$views,
