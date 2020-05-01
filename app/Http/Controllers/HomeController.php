@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::with('relCategoryToIncategory')->get();
+        $categories = Category::with('relCategoryToIncategory')->orderBy('order')->get();
 
         return view('index', [
             'categories' => $categories
@@ -46,7 +46,7 @@ class HomeController extends Controller
         $categories = Category::with(['relCategoryToLesson' => function($query)
         {
             $query->orderBy('view', 'desc');
-        }])->get();
+        }])->orderBy('order')->get();
 
 
         return view('lessons',[

@@ -34,7 +34,7 @@
         <div class="box-border-wrap-1 wow fadeInUp" data-wow-delay="0.2s">
             <div class="row">
                 @foreach($categories as $category)
-                        <a class="col-6 col-md-4 box-border" href="/category/{{$category->id}}">
+                        <a class="col-xl-4 col-lg-4 col-md-4 col-12 box-border" href="/category/{{$category->id}}">
                             <div class="title" style="font-size: 25px;color: #000;">{{$category->title}}</div>
                         <img src="{{url($category->img ?? 'images/brand-12-121x99.png')}}" alt="" width="180" height="147"/>
                                 <div class="block-2-custom">
