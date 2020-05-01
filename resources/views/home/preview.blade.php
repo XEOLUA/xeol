@@ -12,7 +12,8 @@
                             <span style="color:#92d050; position: absolute; top:-25px; left:100px; font-size: 150px;">ІТ</span>
                             <span style="position: absolute; top:30px; left:70px; font-size: 50px;">у світі</span>
                         </div>
-                        <p class="big" style="color: #ababab">На сторінках сайту Ви знайдете як завдання так і зразки їх виконання</p>
+                        <p class="big" style="color: #ababab">На сторінках сайту Ви знайдете як завдання
+                            так і відеоуроки до їх виконання</p>
                     </div>
                 </div>
             </div>

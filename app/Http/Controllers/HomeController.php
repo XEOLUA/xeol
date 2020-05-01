@@ -28,7 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $categories = Category::with('relCategoryToIncategory')->get();
+
+        return view('index', [
+            'categories' => $categories
+        ]);
     }
     public function lessons(){
 //        $categories = Category::with('categoriesCount')->where(['parent_id'=>0,'active'=>1])->orderBy('order')->get();
@@ -67,8 +71,6 @@ class HomeController extends Controller
             'created_at'=>0
         ];
 
-
-
         if($video_id!=''){
             $video_inf = GetUrlYoutube::youtubeinfo($video_id);
 
@@ -80,7 +82,7 @@ class HomeController extends Controller
             }
 
             $date = Carbon::parse($video_inf['created_at']);
-            if($lesson->created_at==null) $lesson->created_at=$date;
+            $lesson->created_at=$date;
             $lesson->save();
         }
 
