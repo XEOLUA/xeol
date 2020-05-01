@@ -7,7 +7,7 @@ namespace App\Services;
 class GetSuffixByNumber
 {
  static public function get_suffix($number){
-  $suf = ["","і","ів"];
+  $suf = ["","и","ів"];
   $des=0;$od=0;
     if ($number>=1 && $number<=9) $od=$number; else
         if($number>=10 && $number<=99)  {$od=$number%10; $des=$number/10;}
