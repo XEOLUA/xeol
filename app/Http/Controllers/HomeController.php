@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use App\Category;
 use App\Incategory;
 use App\Lesson;
 use App\Services\GetUrlYoutube;
+use App\Subscribe;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\VarDumper\VarDumper;
 
 class HomeController extends Controller
 {
@@ -29,9 +34,13 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::with('relCategoryToIncategory')->orderBy('order')->get();
+        $lessons = Lesson::with('relLessonToCategory')->orderBy('created_at','desc')->take(10)->get();
+        $authors = Author::where('active',1)->orderBy('order')->get();
 
         return view('index', [
-            'categories' => $categories
+            'categories' => $categories,
+            'lessons' => $lessons,
+            'authors' => $authors
         ]);
     }
     public function lessons(){
@@ -82,7 +91,7 @@ class HomeController extends Controller
             }
 
             $date = Carbon::parse($video_inf['created_at']);
-            $lesson->created_at=$date;
+            if($lesson->created_at==null) $lesson->created_at=$date;
             $lesson->save();
         }
 
@@ -100,6 +109,28 @@ class HomeController extends Controller
 
         return view('category',[
             'categories' => $categories,
-        ]);;
+        ]);
+    }
+
+    public function subscribe(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:subscribes,email|min:3'
+        ]);
+
+        if ($validator->passes()) {
+            $data = $request->all();
+            $subscribe = new Subscribe;
+            $subscribe->email = $data['email'];
+            $subscribe->save();
+            return Response::json(['success' => '1']);
+        }
+        return Response::json(['errors' => $validator->errors()]);
+    }
+
+    public function feedback(){
+        return view('feedback',[
+
+        ]);
     }
 }

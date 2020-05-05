@@ -52,4 +52,5 @@
                 <a class="col-6 col-md-4 box-border" href="/lessons"><div class="icon icon-sm mdi mdi-arrow-right"></div></a></div>
         </div>
     </div>
+    <a name="newlessons"></a>
 </section>

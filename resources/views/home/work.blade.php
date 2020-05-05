@@ -10,9 +10,9 @@
     <div class="container">
         <div class="row row-30">
             <div class="col-sm-6">
-                <h3>Latest Works</h3>
+                <h3>Новинки</h3>
             </div>
-            <div class="col-sm-6 text-sm-right"><a class="button button-default" href="#">View all projects</a></div>
+            <div class="col-sm-6 text-sm-right"><a class="button button-default" href="/lessons">Дивитися всі уроки</a></div>
         </div>
     </div>
 </section>

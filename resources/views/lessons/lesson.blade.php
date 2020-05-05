@@ -84,6 +84,7 @@
                             </div>
                         </div>
                     </a>
+                    @else @break;
                 @endif
             @endforeach
             <a class="col-6 col-md-4 box-border" href="/category/{{$lessons[0]->id}}">

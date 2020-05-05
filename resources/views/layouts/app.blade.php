@@ -23,5 +23,50 @@
 <div class="snackbars" id="form-output-global"></div>
 <script src="{{url('js/core.min.js')}}"></script>
 <script src="{{url('js/script.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.btnSubmit').click(function(event){
+            event.preventDefault();
+            $.ajax({
+                type:"POST",
+                url:"/subscribe",
+                data: $("#formSubscribe").serialize(),
+                success: function(data){
+                    console.log('Ajax responded');
+                    console.log(data);
+                    if(data.errors) {
+                        document.getElementById('errorAjax').innerHTML='';
+                        document.getElementById('errorAjax').style.display='block';
+                        console.log('errors validation');
+                        console.log(data.errors);
+                        for(let key in data.errors)
+                        {
+                            console.log(key);
+                            document.getElementById('errorAjax').innerHTML+='<div>'+data.errors[key]+'</div>';
+                        };
+                        // grecaptcha.reset();
+                    } else
+                    {
+                        console.log('NOT errors validation');
+                        document.getElementById('errorAjax').innerHTML='';
+                        document.getElementById('errorAjax').style.display='block';
+                        document.getElementById('errorAjax').innerHTML+='Дякуємо за підписку.';
+                        // $('#addMember').modal('hide');
+                        // window.location.href = '/successAddQueryPartner';
+                    }
+                },
+                error: function (data) {
+                    console.log(111);
+                    console.log("777".data);
+                    // $("#emailm").css('color','#fc0059').html(data.responseJSON.errors.email);
+                    // console.log("data.responseJSON);
+                    // console.log('Ajax not responded');
+                }
+            });
+        });
+    });
+
+</script>
 </body>
 </html>
