@@ -1,0 +1,18 @@
+@media(max-width: 991px) {
+    .section_feedback{
+        .block_feedback_form{
+            form{
+                width: 60%;
+            }
+        }
+    }
+}
+@media(max-width: 576px) {
+    .section_feedback{
+        .block_feedback_form{
+            form{
+                width: 100%;
+            }
+        }
+    }
+}
