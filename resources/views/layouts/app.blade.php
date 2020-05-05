@@ -35,15 +35,15 @@
                 success: function(data){
                     console.log('Ajax responded');
                     console.log(data);
-                    if(data.errors) {
+                    if(data.errors_sc) {
                         document.getElementById('errorAjax').innerHTML='';
                         document.getElementById('errorAjax').style.display='block';
                         console.log('errors validation');
-                        console.log(data.errors);
-                        for(let key in data.errors)
+                        console.log(data.errors_sc);
+                        for(let key in data.errors_sc)
                         {
                             console.log(key);
-                            document.getElementById('errorAjax').innerHTML+='<div>'+data.errors[key]+'</div>';
+                            document.getElementById('errorAjax').innerHTML+='<div>'+data.errors_sc[key]+'</div>';
                         };
                         // grecaptcha.reset();
                     } else

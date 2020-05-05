@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableAuthors extends Migration
+class CreateFeedbacksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateTableAuthors extends Migration
      */
     public function up()
     {
-        Schema::create('authors', function (Blueprint $table) {
+        Schema::create('feedbacks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('pseudonym')->nullable();
-            $table->boolean('active')->default(1);
-            $table->string('image')->nullable();
-            $table->integer('order')->default(0);
+            $table->string('name',200);
+            $table->string('email',200);
+            $table->text('text',2000)->nullable();
+            $table->boolean('viewed')->default(0)->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateTableAuthors extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('authors');
+        Schema::dropIfExists('feedbacks');
     }
 }

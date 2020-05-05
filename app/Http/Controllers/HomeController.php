@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Author;
 use App\Category;
+use App\Feedback;
+use App\Http\Requests\FeedbackRequest;
 use App\Incategory;
 use App\Lesson;
 use App\Services\GetUrlYoutube;
@@ -125,12 +127,21 @@ class HomeController extends Controller
             $subscribe->save();
             return Response::json(['success' => '1']);
         }
-        return Response::json(['errors' => $validator->errors()]);
+        return Response::json(['errors_sc' => $validator->errors()]);
     }
 
     public function feedback(){
-        return view('feedback',[
+        return view('feedback');
+    }
 
-        ]);
+    public function addfeedback(FeedbackRequest $request){
+        $data = $request->all();
+        $feedback = new Feedback;
+        $feedback->name = $data['name'];
+        $feedback->email = $data['email'];
+        $feedback->text = $data['text'];
+        $feedback->save();
+
+        dd($feedback);
     }
 }
