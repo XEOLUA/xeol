@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7 col-lg-6">
-                <h3>EVERY PROJECT</h3>
+                <h3>EVERY PROJECT55</h3>
                 <div class="big big-custom">IS A CHALLENGE TO DO BETTER</div>
                 <p>We are a team of  talented designers and developers who are ready to guide our clients through the flawless and timely execution of any web design project. Since day one, we have been delivering creative and unique websites to our clients worldwide.</p>
                 <div class="button-wrap-2"><a class="button button-default" href="about-us.html">Read more about us</a></div>
