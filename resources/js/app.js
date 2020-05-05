@@ -5,7 +5,7 @@
  */
 
 require('./bootstrap');
-
+require('./olga');
 window.Vue = require('vue');
 
 /**
