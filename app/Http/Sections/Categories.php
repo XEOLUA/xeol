@@ -63,6 +63,8 @@ class Categories extends Section implements Initializable
             AdminColumnEditable::text('description')->setLabel('Опис'),
             AdminColumn::count('relCategoryToIncategory', 'Уроків')->setWidth('90px')->setHtmlAttribute('align','center'),
             AdminColumnEditable::checkbox('active','Опубліковано')->setCheckedLabel('Так')->setHtmlAttribute('align','center'),
+            AdminColumn::image('img','Зображення')->setHtmlAttribute('align','center'),
+            AdminColumn::order('order')->setLabel('Порядок')->setWidth('90px'),
             AdminColumn::order('order')->setLabel('Порядок')->setWidth('90px'),
             AdminColumn::text('created_at', 'Created / updated', 'updated_at')
                 ->setWidth('160px')
@@ -115,6 +117,7 @@ class Categories extends Section implements Initializable
                 AdminFormElement::text('title', 'title')
                     ->required(),
                 AdminFormElement::html('<hr>'),
+                AdminFormElement::image('img', 'Зображення'),
                 AdminFormElement::datetime('created_at')
                     ->setVisible(true)
                     ->setReadonly(false)

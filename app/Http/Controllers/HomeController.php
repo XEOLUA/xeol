@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use App\Category;
 use App\Incategory;
 use App\Lesson;
 use App\Services\GetUrlYoutube;
+use App\Subscribe;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\VarDumper\VarDumper;
 
 class HomeController extends Controller
 {
@@ -28,7 +33,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $categories = Category::with('relCategoryToIncategory')->orderBy('order')->get();
+        $lessons = Lesson::with('relLessonToCategory')->orderBy('created_at','desc')->take(10)->get();
+        $authors = Author::where('active',1)->orderBy('order')->get();
+
+        return view('index', [
+            'categories' => $categories,
+            'lessons' => $lessons,
+            'authors' => $authors
+        ]);
     }
     public function lessons(){
 //        $categories = Category::with('categoriesCount')->where(['parent_id'=>0,'active'=>1])->orderBy('order')->get();
@@ -42,7 +55,7 @@ class HomeController extends Controller
         $categories = Category::with(['relCategoryToLesson' => function($query)
         {
             $query->orderBy('view', 'desc');
-        }])->get();
+        }])->orderBy('order')->get();
 
 
         return view('lessons',[
@@ -69,7 +82,9 @@ class HomeController extends Controller
 
         if($video_id!=''){
             $video_inf = GetUrlYoutube::youtubeinfo($video_id);
-            $lesson->view = $video_inf['views'];
+
+            if($video_inf['views']==0) $lesson->view++;
+             else $lesson->view = $video_inf['views'];
 
             if($lesson->image==null){
                 $lesson->image='https://img.youtube.com/vi/'.$video_id.'/0.jpg';
@@ -94,6 +109,28 @@ class HomeController extends Controller
 
         return view('category',[
             'categories' => $categories,
-        ]);;
+        ]);
+    }
+
+    public function subscribe(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:subscribes,email|min:3'
+        ]);
+
+        if ($validator->passes()) {
+            $data = $request->all();
+            $subscribe = new Subscribe;
+            $subscribe->email = $data['email'];
+            $subscribe->save();
+            return Response::json(['success' => '1']);
+        }
+        return Response::json(['errors' => $validator->errors()]);
+    }
+
+    public function feedback(){
+        return view('feedback',[
+
+        ]);
     }
 }

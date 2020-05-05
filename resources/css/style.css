@@ -108,7 +108,9 @@ html p a:hover {
 * Typography
 */
 body {
+
 	font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif!important;
+
 	font-size: 15px;
 	line-height: 1.66667;
 	font-weight: 300;
@@ -9515,16 +9517,12 @@ button.swiper-pagination-bullet {
 	}
 }
 
-/*
- * 	Owl Carousel - Auto Height Plugin
- */
+
 .owl-height {
 	transition: height 500ms ease-in-out;
 }
 
-/*
- *  Core Owl Carousel CSS File
- */
+
 .owl-carousel {
 	display: none;
 	width: 100%;
@@ -9605,17 +9603,13 @@ button.swiper-pagination-bullet {
 	display: block;
 }
 
-/*
- * 	Owl Carousel - Lazy Load Plugin
- */
+
 .owl-carousel .owl-item .owl-lazy {
 	opacity: 0;
 	transition: opacity 400ms ease;
 }
 
-/*
- * 	Owl Carousel - Video Plugin
- */
+
 .owl-carousel .owl-video-wrapper {
 	position: relative;
 	height: 100%;
@@ -10157,11 +10151,13 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-thumb-outer.lg-grab .lg-thumb-item {
+
 	cursor: grab;
 }
 
 .lg-outer .lg-thumb-outer.lg-grabbing .lg-thumb-item {
 	cursor: move;
+
 	cursor: grabbing;
 }
 
@@ -11355,6 +11351,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .lg-outer .lg-has-html5 .lg-video-play {
+
 	height: 64px;
 	margin-left: -32px;
 	margin-top: -32px;

@@ -5,13 +5,12 @@
 @import 'variables';
 
 // Bootstrap
-//@import "../css/app.css";
 @import "../css/bootstrap.css";
-@import "../css/style.css";
 @import "../css/fonts.css";
+//@import '~bootstrap/scss/bootstrap';
 @import "olga";
 @import "global";
-//@import '~bootstrap/scss/bootstrap';
+@import "../css/app.css";
 
 
-
+@import "../css/style.css";

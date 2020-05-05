@@ -228,6 +228,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'geturl' => App\Services\GetUrlYoutube::class,
         'youtubeinfo' => App\Services\GetUrlYoutube::class,
+        'get_suffix' => App\Services\GetSuffixByNumber::class,
+        'imgCopy_3' => App\Services\imgResize::class,
     ],
 
 ];
