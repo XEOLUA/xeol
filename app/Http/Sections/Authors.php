@@ -19,13 +19,13 @@ use SleepingOwl\Admin\Form\Buttons\Cancel;
 use SleepingOwl\Admin\Form\Buttons\SaveAndCreate;
 
 /**
- * Class Categories
+ * Class Authors
  *
- * @property \App\Category $model
+ * @property \App\Author $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class Categories extends Section implements Initializable
+class Authors extends Section implements Initializable
 {
     /**
      * @var bool
@@ -35,7 +35,7 @@ class Categories extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title = "Категорії";
+    protected $title="Автори";
 
     /**
      * @var string
@@ -47,7 +47,7 @@ class Categories extends Section implements Initializable
      */
     public function initialize()
     {
-        $this->addToNavigation()->setPriority(100)->setIcon('fas fa-folder-open');
+        $this->addToNavigation()->setPriority(100)->setIcon('fas fa-portrait');
     }
 
     /**
@@ -59,12 +59,20 @@ class Categories extends Section implements Initializable
     {
         $columns = [
             AdminColumn::text('id', '#')->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
-            AdminColumnEditable::text('title')->setLabel('Заголовок'),
-            AdminColumnEditable::text('description')->setLabel('Опис'),
-            AdminColumn::count('relCategoryToIncategory', 'Уроків')->setWidth('90px')->setHtmlAttribute('align','center'),
-            AdminColumnEditable::checkbox('active','Опубліковано')->setCheckedLabel('Так')->setHtmlAttribute('align','center'),
-            AdminColumn::image('img','Зображення')->setHtmlAttribute('align','center'),
-            AdminColumn::order('order')->setLabel('Порядок')->setWidth('90px'),
+            AdminColumnEditable::text('name', 'Ім\'я', 'created_at')
+                ->setSearchCallback(function($column, $query, $search){
+                    return $query
+                        ->orWhere('name', 'like', '%'.$search.'%')
+                        ->orWhere('created_at', 'like', '%'.$search.'%')
+                    ;
+                })
+                ->setOrderable(function($query, $direction) {
+                    $query->orderBy('created_at', $direction);
+                })
+            ,
+            AdminColumnEditable::text('pseudonym', 'Псевдонім'),
+            AdminColumn::image('image', 'Світлина'),
+            AdminColumnEditable::checkbox('active', 'Відображати')->setCheckedLabel('Так')->setHtmlAttribute('align','center'),
             AdminColumn::order('order')->setLabel('Порядок')->setWidth('90px'),
             AdminColumn::text('created_at', 'Created / updated', 'updated_at')
                 ->setWidth('160px')
@@ -73,24 +81,23 @@ class Categories extends Section implements Initializable
                 })
                 ->setSearchable(false)
             ,
-
         ];
 
         $display = AdminDisplay::datatables()
             ->setName('firstdatatables')
+//            ->setOrder([[0, 'asc']])
+            ->setDisplaySearch(true)
             ->setApply(function ($query) {
                 $query->orderBy('order', 'asc');
             })
-//            ->setOrder([[4, 'asc']])
-            ->setDisplaySearch(true)
             ->paginate(25)
             ->setColumns($columns)
-            ->setHtmlAttribute('class', 'table-primary table-hover th-center')
+//            ->setHtmlAttribute('class', 'table-primary table-hover th-center')
         ;
 
         $display->setColumnFilters([
             AdminColumnFilter::select()
-                ->setModelForOptions(\App\Category::class, 'name')
+                ->setModelForOptions(\App\Author::class, 'name')
                 ->setLoadOptionsQueryPreparer(function($element, $query) {
                     return $query;
                 })
@@ -114,10 +121,12 @@ class Categories extends Section implements Initializable
     {
         $form = AdminForm::card()->addBody([
             AdminFormElement::columns()->addColumn([
-                AdminFormElement::text('title', 'title')
-                    ->required(),
-                AdminFormElement::html('<hr>'),
-                AdminFormElement::image('img', 'Зображення'),
+                AdminFormElement::text('name', 'Ім\'я')->required(),
+                AdminFormElement::text('pseudonym', 'Прсеводнім'),
+                AdminFormElement::number('order', 'Порядок'),
+                AdminFormElement::image('image', 'Світлина'),
+                AdminFormElement::checkbox('active', 'Відображати')->setDefaultValue(1),
+
                 AdminFormElement::datetime('created_at')
                     ->setVisible(true)
                     ->setReadonly(false)

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Author;
 use App\Category;
 use App\Incategory;
 use App\Lesson;
@@ -21,6 +22,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         Category::class => 'App\Http\Sections\Categories',
         Lesson::class => 'App\Http\Sections\Lessons',
         Incategory::class => 'App\Http\Sections\LessonsInCategory',
+        Author::class => 'App\Http\Sections\Authors',
     ];
 
     /**

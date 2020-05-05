@@ -3,49 +3,56 @@
     <div class="container">
         <div class="row row-30 justify-content-lg-between">
             <div class="col-sm-6 col-lg-3 col-xl-3">
-                <h5>Location</h5>
+                <h5>Розташування</h5>
                 <ul class="list list-sm">
                     <li>
-                        <p>1418 Riverwood Drive,</p>
+                        <p>Україна,</p>
                     </li>
                     <li>
-                        <p>Suite 3845 Cottonwood,</p>
-                    </li>
-                    <li>
-                        <p>CA 96022</p>
-                    </li>
-                    <li>
-                        <p>United States</p>
+                        <p>Хмельницький</p>
                     </li>
                 </ul>
             </div>
             <div class="col-sm-6 col-lg-4 col-xl-3">
-                <h5>Contacts</h5>
-                <dl class="list-terms-custom">
-                    <dt>Ph.</dt>
-                    <dd><a class="link-default" href="tel:#">1-300-123-1234</a></dd>
-                </dl>
+                <h5>Контакти</h5>
                 <dl class="list-terms-custom">
                     <dt>Mail.</dt>
-                    <dd><a class="link-default" href="mailto:#">Info@demolink.org</a></dd>
+                    <dd><a class="link-default" href="mailto:#">xeolukr@gmail.com</a></dd>
                 </dl>
                 <ul class="list-inline list-inline-sm">
                     <li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-facebook" href="#"></a></li>
-                    <li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-instagram" href="#"></a></li>
-                    <li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-behance" href="#"></a></li>
-                    <li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-twitter" href="#"></a></li>
+{{--                    <li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-instagram" href="#"></a></li>--}}
+{{--                    <li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-twitter" href="#"></a></li>--}}
                 </ul>
             </div>
             <div class="col-lg-4">
-                <h5>Newsletter</h5>
-                <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                {{$success ?? ''}}
+                @if(count($errors)>0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <h5>Підписатися</h5>
+                <div id="errorAjax"></div>
+                <form
+                    id="formSubscribe"
+{{--                    class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact"--}}
+                      method="post"
+{{--action={{route('subscribe')}}--}}
+                >
+                    @csrf
                     <div class="form-wrap form-wrap-icon">
                         <div class="form-icon mdi mdi-email-outline"></div>
-                        <input class="form-input" id="footer-email" type="email" name="email" data-constraints="@Email @Required">
+                        <input class="form-input" id="footer-email" type="email" name="email"
+                               data-constraints="@Email @Required">
                         <label class="form-label" for="footer-email">E-mail</label>
                     </div>
                     <div class="button-wrap">
-                        <button class="button button-default button-invariable" type="submit">Subscribe</button>
+                        <button class="button button-default button-invariable btnSubmit" type="submit">Підписатися</button>
                     </div>
                 </form>
             </div>
@@ -56,13 +63,15 @@
     <div class="container">
         <div class="row row-15 justify-content-lg-between">
             <div class="col-lg-6 col-xl-6 text-lg-left">
-                <p class="rights"><span>&copy;&nbsp;</span> <a href="http://xeol.com.ua">XEOL</a> <span class="copyright-year"></span></p>
+                <p class="rights"><span>&copy;&nbsp;</span>
+                    <a href="http://xeol.com.ua">XEOL</a> <span class="copyright-year"></span></p>
             </div>
             <div class="col-lg-6 col-xl-6">
                 <ul class="list-inline list-inline-lg text-uppercase">
-                    <li><a href="about-us.html">About us</a></li>
-                    <li><a href="#">Our Team</a></li>
-                    <li><a href="#">Blog</a></li>
+{{--                    <li><a href="about-us.html">About us</a></li>--}}
+                    <li><a href="#team">Наша команда</a></li>
+                    <li><a href="#newlessons">Новинки</a></li>
+{{--                    <li><a href="#">Blog</a></li>--}}
                 </ul>
             </div>
         </div>
