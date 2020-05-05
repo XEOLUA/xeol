@@ -37,7 +37,7 @@
                     </div>
                 @endif
                 <h5>Підписатися</h5>
-                <div id="errorAjax"></div>
+                <div id="errorAjax" style="color:red"></div>
                 <form
                     id="formSubscribe"
 {{--                    class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact"--}}

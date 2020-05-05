@@ -11,12 +11,12 @@
                     </div>
                     <ul class="list-inline list-inline-sm-1">
                         <li>
-                            <p>Share</p>
+                            <p>Група:</p>
                         </li>
-                        <li><a class="icon icon-sm link-default mdi mdi-facebook" href="https://www.facebook.com/xeolcomua"></a></li>
-                        <li><a class="icon icon-sm link-default mdi mdi-instagram" href="#"></a></li>
-                        <li><a class="icon icon-sm link-default mdi mdi-twitter" href="#"></a></li>
-                        <li><a class="icon icon-sm link-default mdi mdi-youtube-play" href="#"></a></li>
+                        <li><a target="_blank" class="icon icon-sm link-default mdi mdi-facebook" href="https://www.facebook.com/xeolcomua"></a></li>
+{{--                        <li><a class="icon icon-sm link-default mdi mdi-instagram" href="#"></a></li>--}}
+{{--                        <li><a class="icon icon-sm link-default mdi mdi-twitter" href="#"></a></li>--}}
+{{--                        <li><a class="icon icon-sm link-default mdi mdi-youtube-play" href="#"></a></li>--}}
                     </ul>
                 </div>
             </div>
@@ -28,12 +28,10 @@
             <div class="swiper-wrapper">
                 @foreach($lessons as $lesson)
                     <a class="swiper-slide" href="/lesson/{{$lesson->id}}/category/{{$lesson['relLessonToCategory'][0]->id}}">
-                    <div class="swiper-slide" data-slide-bg="{{url($lesson->image ?? 'images/home-1-585x541.jpg')}}">
-
-                            <div style="color:#ffffff">{{$lesson['relLessonToCategory'][0]->title}}</div>
-                            <div style="color:#ffffff">{{$lesson->title}}</div>
-
-                </div>
+                    <div style="width: 100%; padding: 5px" class="swiper-slide" data-slide-bg="{{url($lesson->image ?? 'images/home-1-585x541.jpg')}}">
+                            <div style="color:#92d050; font-weight: 400; font-size:22px">{{$lesson['relLessonToCategory'][0]->title}}</div>
+                            <div style="color:#ffffff; background-color: #262626; padding: 5px">{{$lesson->title}}</div>
+                    </div>
                     </a>
                 @endforeach
 {{--                <div class="swiper-slide" data-slide-bg="images/home-2-585x541.jpg"></div>--}}
