@@ -138,10 +138,12 @@ class HomeController extends Controller
         $data = $request->all();
         $feedback = new Feedback;
         $feedback->name = $data['name'];
-        $feedback->email = $data['email'];
+        $feedback->email = $data['email_fb'];
         $feedback->text = $data['text'];
         $feedback->save();
 
-        dd($feedback);
+        $message = "Дякуємо. Повідомлення успішно надіслане.";
+
+        return redirect()->route('feedback')->with(['flash_message' => $message]);
     }
 }

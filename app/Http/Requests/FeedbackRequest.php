@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\Captcha;
 
 class FeedbackRequest extends FormRequest
 {
@@ -25,9 +26,10 @@ class FeedbackRequest extends FormRequest
     {
         return [
             'name' =>  'required|max:100',
-            'email' => 'required|email:feedbacks,email',
+            'email_fb' => 'required|email',
             'text' =>  'required',
 //            'g-recaptcha-response' => 'required|recaptcha',
+            'g-recaptcha-response' => new Captcha(),
         ];
     }
 }
