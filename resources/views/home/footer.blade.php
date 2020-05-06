@@ -27,10 +27,10 @@
             </div>
             <div class="col-lg-4">
                 {{$success ?? ''}}
-                @if(count($errors)>0)
+                @if(isset($errors_sc) && count($errors_sc)>0)
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach($errors->all() as $error)
+                            @foreach($errors_sc->all() as $error)
                                 <li>{{$error}}</li>
                             @endforeach
                         </ul>

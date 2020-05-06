@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Author;
 use App\Category;
+use App\Feedback;
 use App\Incategory;
 use App\Lesson;
 use App\Navigation;
@@ -23,6 +24,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
         Lesson::class => 'App\Http\Sections\Lessons',
         Incategory::class => 'App\Http\Sections\LessonsInCategory',
         Author::class => 'App\Http\Sections\Authors',
+        Feedback::class => 'App\Http\Sections\Feedbacks',
     ];
 
     /**
