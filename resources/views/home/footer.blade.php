@@ -20,7 +20,7 @@
                     <dd><a class="link-default" href="mailto:#">xeolukr@gmail.com</a></dd>
                 </dl>
                 <ul class="list-inline list-inline-sm">
-                    <li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-facebook" href="#"></a></li>
+                    <li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-facebook" href="https://www.facebook.com/xeolcomua" target="_blank"></a></li>
 {{--                    <li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-instagram" href="#"></a></li>--}}
 {{--                    <li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-twitter" href="#"></a></li>--}}
                 </ul>
@@ -71,6 +71,25 @@
 {{--                    <li><a href="about-us.html">About us</a></li>--}}
                     <li><a href="#team">Наша команда</a></li>
                     <li><a href="#newlessons">Новинки</a></li>
+                    <li>
+                        <!-- MyCounter v.2.0 -->
+                        <script type="text/javascript"><!--
+                            my_id = 170597;
+                            my_width = 88;
+                            my_height = 61;
+                            my_alt = "MyCounter - счётчик и статистика";
+                            //--></script>
+                        <script type="text/javascript"
+                                src="https://get.mycounter.ua/counter2.0.js">
+                        </script><noscript>
+                            <a target="_blank" href="https://mycounter.ua/"><img
+                                    src="https://get.mycounter.ua/counter.php?id=170597"
+                                    title="MyCounter - счётчик и статистика"
+                                    alt="MyCounter - счётчик и статистика"
+                                    width="88" height="61" border="0" /></a></noscript>
+                        <!--/ MyCounter -->
+
+                    </li>
 {{--                    <li><a href="#">Blog</a></li>--}}
                 </ul>
             </div>
