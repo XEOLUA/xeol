@@ -69,7 +69,7 @@ class Lessons extends Section implements Initializable
             AdminColumnEditable::text('title')->setLabel('Заголовок'),
             AdminColumn::count('relLessonToIncategory', 'В категоріях')->setWidth('130px')->setHtmlAttribute('align','center'),
             AdminColumn::lists('relLessonToCategory.title', 'Категорії'),
-            AdminColumnEditable::text('level','Складність')->setWidth('100px')->setHtmlAttribute('align','center'),
+            AdminColumnEditable::text('level','Складність')->setWidth('110px')->setHtmlAttribute('align','center'),
             AdminColumnEditable::text('author','Автор')->setWidth('100px'),
             AdminColumnEditable::text('view','Переглядів')->setWidth('110px')->setHtmlAttribute('align','center'),
             AdminColumn::image('image','Зображення')->setWidth('110px'),

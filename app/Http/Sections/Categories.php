@@ -65,7 +65,6 @@ class Categories extends Section implements Initializable
             AdminColumnEditable::checkbox('active','Опубліковано')->setCheckedLabel('Так')->setHtmlAttribute('align','center'),
             AdminColumn::image('img','Зображення')->setHtmlAttribute('align','center'),
             AdminColumn::order('order')->setLabel('Порядок')->setWidth('90px'),
-            AdminColumn::order('order')->setLabel('Порядок')->setWidth('90px'),
             AdminColumn::text('created_at', 'Created / updated', 'updated_at')
                 ->setWidth('160px')
                 ->setOrderable(function($query, $direction) {

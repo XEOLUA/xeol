@@ -11,9 +11,12 @@ class GetUrlYoutube
          $s='';
          $p1 = strpos($text, "<iframe");
          $p2 = strpos($text, "</iframe>");
-         if ($p1!=false && $p2!=false) $s=substr($text, $p1, $p2-$p1+9);  else $s='';
+         if (($p1!=false || $p1==0) && $p2!=false) $s=substr($text, $p1, $p2-$p1+9);  else $s='';
+
          $pe=strpos($s, "embed");
+
          if ($pe!=false) $src=substr($s, $pe+6, 11);  else $src='';
+
      return $src;
  }
 
@@ -41,7 +44,7 @@ class GetUrlYoutube
      $obj = json_decode(curl_exec($curlSession));
     // curl_close($curlSession);
 
-//     dd($api_key,request()->getHttpHost(),$obj);
+//     dd($api_key,request()->getHttpHost(),$obj, $video_id);
 
      $views=0;
      $likes=0;
@@ -50,8 +53,8 @@ class GetUrlYoutube
 
      if(isset($obj->items[0])){
          $views= $obj->items[0]->statistics->viewCount;
-         $likes = $obj->items[0]->statistics->likeCount;
-         $dislikes = $obj->items[0]->statistics->dislikeCount;
+//         $likes = $obj->items[0]->statistics->likeCount;
+//         $dislikes = $obj->items[0]->statistics->dislikeCount;
      }
 
 //     $json_result = file_get_contents("https://www.googleapis.com/youtube/v3/videos?part=snippet&id=$video_id&key=$api_key");

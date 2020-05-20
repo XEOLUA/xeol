@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\VarDumper\VarDumper;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -143,6 +144,11 @@ class HomeController extends Controller
         $feedback->save();
 
         $message = "Дякуємо. Повідомлення успішно надіслане.";
+//        dd($message);
+        Mail::send(['text'=>'mail'], ['name'=>$feedback->name,'email_fb'=>$feedback->email,'text'=>$feedback->text],function($message){
+            $message->to('savitoleg@ukr.net', 'to PWA admin')->subject("Зворотній зв'язок new.xeol.com.ua");
+
+        });
 
         return redirect()->route('feedback')->with(['flash_message' => $message]);
     }

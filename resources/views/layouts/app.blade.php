@@ -5,6 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166193936-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-166193936-1');
+    </script>
+
     <link rel="stylesheet" type="text/css" href={{url("//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900")}}>
 {{--    <link rel="icon" href="images/favicon.ico" type="image/x-icon">--}}
     <link rel="stylesheet" type="text/css" href="{{url('css/app.css')}}">
@@ -32,25 +43,25 @@
             event.preventDefault();
             $.ajax({
                 type:"POST",
-                url:"/subscribe",
+                url:"/subscribe/",
                 data: $("#formSubscribe").serialize(),
                 success: function(data){
-                    console.log('Ajax responded');
-                    console.log(data);
+                    // console.log('Ajax responded');
+                    // console.log(data);
                     if(data.errors_sc) {
                         document.getElementById('errorAjax').innerHTML='';
                         document.getElementById('errorAjax').style.display='block';
-                        console.log('errors validation');
-                        console.log(data.errors_sc);
+                        // console.log('errors validation');
+                        // console.log(data.errors_sc);
                         for(let key in data.errors_sc)
                         {
-                            console.log(key);
+                            // console.log(key);
                             document.getElementById('errorAjax').innerHTML+='<div>'+data.errors_sc[key]+'</div>';
                         };
                         // grecaptcha.reset();
                     } else
                     {
-                        console.log('NOT errors validation');
+                        // console.log('NOT errors validation');
                         document.getElementById('errorAjax').innerHTML='';
                         document.getElementById('errorAjax').style.display='block';
                         document.getElementById('errorAjax').innerHTML+='Дякуємо за підписку.';
@@ -59,8 +70,8 @@
                     }
                 },
                 error: function (data) {
-                    console.log(111);
-                    console.log("777".data);
+                    // console.log(111);
+                    // console.log("777".data);
                     // $("#emailm").css('color','#fc0059').html(data.responseJSON.errors.email);
                     // console.log("data.responseJSON);
                     // console.log('Ajax not responded');

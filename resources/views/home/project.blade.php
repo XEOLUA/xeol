@@ -13,7 +13,7 @@
                 <h3>Кожен урок</h3>
                 <div class="big big-custom">НАМАГАЄМОСЯ ЗРОБИТИ КРАЩИМ</div>
                 <p>Наша команда складається з досвідчених викладачів та талановитих учнів, студентів, які мають досвід виступів на олімпіадах, МАН та різних конкурсах у галузі ІТ.</p>
-                <div class="button-wrap-2"><a class="button button-default" href="about-us.html">Докладніше про нас</a></div>
+                <div class="button-wrap-2"><a class="button button-default" href="#team">Докладніше про нас</a></div>
             </div>
         </div>
     </div>

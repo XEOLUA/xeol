@@ -2,6 +2,7 @@
 
 namespace App\Http\Sections;
 
+use AdminColumnEditable;
 use AdminDisplay;
 use AdminColumn;
 use AdminForm;
@@ -34,7 +35,7 @@ class Navigates extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title;
+    protected $title="Навігація";
 
     /**
      * @var string
@@ -46,7 +47,7 @@ class Navigates extends Section implements Initializable
      */
     public function initialize()
     {
-        $this->addToNavigation()->setPriority(100)->setIcon('fa fa-lightbulb-o');
+        $this->addToNavigation()->setPriority(100)->setIcon('fas fa-list-ul');
     }
 
     /**
@@ -58,7 +59,7 @@ class Navigates extends Section implements Initializable
     {
         $columns = [
             AdminColumn::text('id', '#')->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::link('name', 'Name', 'created_at')
+            AdminColumnEditable::text('block_id', 'Блок', 'created_at')
                 ->setSearchCallback(function($column, $query, $search){
                     return $query
                         ->orWhere('name', 'like', '%'.$search.'%')
@@ -69,7 +70,11 @@ class Navigates extends Section implements Initializable
                     $query->orderBy('created_at', $direction);
                 })
             ,
-            AdminColumn::boolean('name', 'On'),
+            AdminColumnEditable::text('title', 'Заголовок'),
+            AdminColumnEditable::text('link', 'URL'),
+            AdminColumnEditable::checkbox('active','Опубліковано')->setCheckedLabel('Так')->setHtmlAttribute('align','center'),
+            AdminColumnEditable::text('settings', 'Налаштування'),
+            AdminColumn::order('order')->setLabel('Порядок')->setWidth('90px'),
             AdminColumn::text('created_at', 'Created / updated', 'updated_at')
                 ->setWidth('160px')
                 ->setOrderable(function($query, $direction) {
@@ -81,7 +86,9 @@ class Navigates extends Section implements Initializable
 
         $display = AdminDisplay::datatables()
             ->setName('firstdatatables')
-            ->setOrder([[0, 'asc']])
+            ->setApply(function ($query) {
+                $query->orderBy('order', 'asc');
+            })
             ->setDisplaySearch(true)
             ->paginate(25)
             ->setColumns($columns)
