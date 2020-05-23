@@ -5,6 +5,6 @@
         <div class="cssload-container">
             <div class="cssload-speeding-wheel"></div>
         </div>
-        <p>Loading...</p>
+        <p>Завантаження...</p>
     </div>
 </div>

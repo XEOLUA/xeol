@@ -23,7 +23,7 @@
                     @csrf
                         <input class="inp" type="text" name="name" id="name" placeholder="Введіть ім'я" value="{{old('name')}}">
                         <input class="inp"  type="email" name="email_fb" id="email_fb" placeholder="E-mail" value="{{old('email_fb')}}">
-                        <textarea class="inp"  name="text" id="text" cols="30" rows="10" placeholder="Текст повідомлення">{{old('text')}}</textarea>
+                        <textarea class="inp"  name="text" id="text" cols="30" rows="4" placeholder="Текст повідомлення">{{old('text')}}</textarea>
 
                 @if(env('GOOGLE_RECAPTCHA_SITE_KEY'))
                     <center>

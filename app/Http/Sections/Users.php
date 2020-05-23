@@ -2,6 +2,7 @@
 
 namespace App\Http\Sections;
 
+use AdminColumnEditable;
 use AdminDisplay;
 use AdminColumn;
 use AdminForm;
@@ -34,7 +35,7 @@ class Users extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title;
+    protected $title="Користувачі";
 
     /**
      * @var string
@@ -46,7 +47,7 @@ class Users extends Section implements Initializable
      */
     public function initialize()
     {
-        $this->addToNavigation()->setPriority(100)->setIcon('fa fa-lightbulb-o');
+        $this->addToNavigation()->setPriority(100)->setIcon('fas fa-users');
     }
 
     /**
@@ -56,9 +57,16 @@ class Users extends Section implements Initializable
      */
     public function onDisplay($payload = [])
     {
+        $roles=[
+            'Адміністратор',
+            'Користувач',
+            'Модератор',
+            'Викладач'
+        ];
+
         $columns = [
             AdminColumn::text('id', '#')->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
-            AdminColumn::link('name', 'Name', 'created_at')
+            AdminColumnEditable::text('name', 'Name', 'created_at')
                 ->setSearchCallback(function($column, $query, $search){
                     return $query
                         ->orWhere('name', 'like', '%'.$search.'%')
@@ -69,7 +77,12 @@ class Users extends Section implements Initializable
                     $query->orderBy('created_at', $direction);
                 })
             ,
-            AdminColumn::boolean('name', 'On'),
+            AdminColumnEditable::text('group', 'Група'),
+            AdminColumnEditable::select('role')->setLabel('Роль')->setWidth('250px')
+                ->setOptions($roles)
+                ->setDisplay('Роль')
+                ->setTitle('Выберите роль:'),
+            AdminColumnEditable::text('email', 'E-mail'),
             AdminColumn::text('created_at', 'Created / updated', 'updated_at')
                 ->setWidth('160px')
                 ->setOrderable(function($query, $direction) {

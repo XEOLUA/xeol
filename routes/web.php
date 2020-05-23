@@ -29,6 +29,6 @@ Route::get('/feedback', 'HomeController@feedback')->name('feedback');
 
 View::composer('home.header', function($view)
 {
-    $view->with('nav', Navigation::where('block_id',1)->orderBy('order')->get());
+    $view->with('nav', Navigation::where('block_id',1)->where('active',1)->orderBy('order')->get());
 });
 

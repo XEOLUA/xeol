@@ -17,7 +17,7 @@
                 <h5>Контакти</h5>
                 <dl class="list-terms-custom">
                     <dt>Mail.</dt>
-                    <dd><a class="link-default" href="mailto:#">xeolukr@gmail.com</a></dd>
+                    <dd><a class="link-default" href="mailto:#">xeol@ukr.net</a></dd>
                 </dl>
                 <ul class="list-inline list-inline-sm">
                     <li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-facebook" href="https://www.facebook.com/xeolcomua" target="_blank"></a></li>
@@ -69,8 +69,8 @@
             <div class="col-lg-6 col-xl-6">
                 <ul class="list-inline list-inline-lg text-uppercase">
 {{--                    <li><a href="about-us.html">About us</a></li>--}}
-                    <li><a href="#team">Наша команда</a></li>
-                    <li><a href="#newlessons">Новинки</a></li>
+                    <li><a href="/#team">Наша команда</a></li>
+                    <li><a href="/#newlessons">Новинки</a></li>
                     <li>
                         <!-- MyCounter v.2.0 -->
                         <script type="text/javascript"><!--

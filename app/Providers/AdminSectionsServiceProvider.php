@@ -8,6 +8,7 @@ use App\Feedback;
 use App\Incategory;
 use App\Lesson;
 use App\Navigation;
+use App\Subscribe;
 use App\User;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 
@@ -22,9 +23,10 @@ class AdminSectionsServiceProvider extends ServiceProvider
         Navigation::class => 'App\Http\Sections\Navigates',
         Category::class => 'App\Http\Sections\Categories',
         Lesson::class => 'App\Http\Sections\Lessons',
-        Incategory::class => 'App\Http\Sections\LessonsInCategory',
+//        Incategory::class => 'App\Http\Sections\LessonsInCategory',
         Author::class => 'App\Http\Sections\Authors',
         Feedback::class => 'App\Http\Sections\Feedbacks',
+        Subscribe::class => 'App\Http\Sections\Subscribes',
     ];
 
     /**

@@ -15,8 +15,7 @@
                     <div class="col-sm-6 wow fadeInLeft">
                         <div class="box-team box-team-right">
                             <img src="
-{{$author->image ? url(\App\Services\ImgResize::ImgCopy_3($author->image,600,700)) : url('images/index-3-1-390x332.jpg')}}"
-{{--{{url($author->image ?? 'images/index-3-1-390x332.jpg')}}" --}}
+{{$author->image ? url(\App\Services\ImgResize::ImgCopy_3($author->image,385,450)) : url('images/index-3-1-390x332.jpg')}}"
                                  alt="" width="390" height="332"/>
                             <div class="meta">
                                 <div class="heading-6 title">{{$author->name ?? 'John Smith'}}</div>

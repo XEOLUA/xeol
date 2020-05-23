@@ -80,9 +80,9 @@
                 {{--                        <a class="col-6 col-md-4 box-border" href="#">--}}
                 {{--                         <div  style="height: 120px"></div></a>--}}
                 {{--                @endfor--}}
-                <a class="col-6 col-md-4 box-border" href="/category/{{$item->id}}">
-                    <div class="icon icon-sm mdi mdi-arrow-right"></div>
-                </a>
+{{--                <a class="col-6 col-md-4 box-border" href="/category/{{$item->id}}">--}}
+{{--                    <div class="icon icon-sm mdi mdi-arrow-right"></div>--}}
+{{--                </a>--}}
             </div>
         </div>
     </div>

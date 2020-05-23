@@ -19,13 +19,13 @@ use SleepingOwl\Admin\Form\Buttons\Cancel;
 use SleepingOwl\Admin\Form\Buttons\SaveAndCreate;
 
 /**
- * Class Navigates
+ * Class Subscribes
  *
- * @property \App\Navigation $model
+ * @property \App\Subscribe $model
  *
  * @see https://sleepingowladmin.ru/#/ru/model_configuration_section
  */
-class Navigates extends Section implements Initializable
+class Subscribes extends Section implements Initializable
 {
     /**
      * @var bool
@@ -35,7 +35,7 @@ class Navigates extends Section implements Initializable
     /**
      * @var string
      */
-    protected $title="Навігація";
+    protected $title='Підписка';
 
     /**
      * @var string
@@ -47,7 +47,7 @@ class Navigates extends Section implements Initializable
      */
     public function initialize()
     {
-        $this->addToNavigation()->setPriority(100)->setIcon('fas fa-list-ul');
+        $this->addToNavigation()->setPriority(100)->setIcon('fas fa-envelope-open-text');
     }
 
     /**
@@ -58,11 +58,13 @@ class Navigates extends Section implements Initializable
     public function onDisplay($payload = [])
     {
         $columns = [
-            AdminColumn::text('id', '#')->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
-            AdminColumnEditable::text('block_id', 'Блок', 'created_at')
+            AdminColumn::text('email', 'E-mail')->setWidth('200px')
+//                ->setHtmlAttribute('class', 'text-center')
+            ,
+            AdminColumnEditable::checkbox('active', 'Активний')
                 ->setSearchCallback(function($column, $query, $search){
                     return $query
-                        ->orWhere('name', 'like', '%'.$search.'%')
+                        ->orWhere('email', 'like', '%'.$search.'%')
                         ->orWhere('created_at', 'like', '%'.$search.'%')
                     ;
                 })
@@ -70,11 +72,6 @@ class Navigates extends Section implements Initializable
                     $query->orderBy('created_at', $direction);
                 })
             ,
-            AdminColumnEditable::text('title', 'Заголовок'),
-            AdminColumnEditable::text('link', 'URL'),
-            AdminColumnEditable::checkbox('active','Опубліковано')->setCheckedLabel('Так')->setHtmlAttribute('align','center'),
-            AdminColumnEditable::text('settings', 'Налаштування'),
-            AdminColumn::order('order')->setLabel('Порядок')->setWidth('90px'),
             AdminColumn::text('created_at', 'Created / updated', 'updated_at')
                 ->setWidth('160px')
                 ->setOrderable(function($query, $direction) {
@@ -86,18 +83,16 @@ class Navigates extends Section implements Initializable
 
         $display = AdminDisplay::datatables()
             ->setName('firstdatatables')
-            ->setApply(function ($query) {
-                $query->orderBy('order', 'asc');
-            })
+            ->setOrder([[0, 'asc']])
             ->setDisplaySearch(true)
             ->paginate(25)
             ->setColumns($columns)
-            ->setHtmlAttribute('class', 'table-primary table-hover th-center')
+//            ->setHtmlAttribute('class', 'table-primary table-hover th-center')
         ;
 
         $display->setColumnFilters([
             AdminColumnFilter::select()
-                ->setModelForOptions(\App\Navigation::class, 'name')
+                ->setModelForOptions(\App\Subscribe::class, 'name')
                 ->setLoadOptionsQueryPreparer(function($element, $query) {
                     return $query;
                 })
