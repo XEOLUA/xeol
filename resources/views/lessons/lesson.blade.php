@@ -9,10 +9,10 @@
         </h3>
         {!! $lesson->text !!}
         <div style="background-color: #efefef; padding: 10px; margin: 30px;">
-            <div>Рівеннь складності: {{$lesson->level}}</div>
+            <div>Складність: {{$lesson->level}}</div>
             <div>Переглядів: {{$lesson->view}}</div>
-            <div>Дата створення: {{$lesson->created_at}}</div>
-            <div>Дата змінення: {{$lesson->updated_at}}</div>
+            <div>Створено: {{$lesson->created_at}}</div>
+{{--            <div>Дата змінення: {{$lesson->updated_at}}</div>--}}
             <div>Автор: {{$lesson->author}}</div>
         </div>
         <div class="row row-30 align-items-center">

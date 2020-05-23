@@ -19,23 +19,28 @@
     </div>
     <div class="image-container">
         <div class="mock-up-1">
-            <div class="object object-1"><img class="wow fadeInRight" src="images/xeol-team/xeol_team_4.png" alt="" width="395" height="243"/>
-{{--            <div class="object object-1"><img class="wow fadeInRight" src="images/image-custom-1-395x243.jpg" alt="" width="395" height="243"/>--}}
+            <div class="object object-1"><img class="wow fadeInRight"
+              src="{{url(\App\Services\ImgResize::ImgCopy_3('images/xeol-team/xeol_team_4.png',355,243))}}" alt="" width="395" height="243"/>
             </div>
-            <div class="object object-2"><img class="wow fadeInRight" src="images/xeol-team/xeol_team_3.png" alt="" width="384" height="189" data-wow-delay="0.2s"/>
-{{--            <div class="object object-2"><img class="wow fadeInRight" src="images/image-custom-2-384x189.jpg" alt="" width="384" height="189" data-wow-delay="0.2s"/>--}}
+            <div class="object object-2"><img class="wow fadeInRight"
+              src="{{url(\App\Services\ImgResize::ImgCopy_3('images/xeol-team/xeol_team_3.png',384,189))}}"
+              alt="" width="384" height="189" data-wow-delay="0.2s"/>
             </div>
-            <div class="object object-3"><img class="wow fadeInRight" src="images/xeol-team/xeol_team_2.png" alt="" width="395" height="243" data-wow-delay="0.4s"/>
-{{--            <div class="object object-3"><img class="wow fadeInRight" src="images/image-custom-3-395x243.jpg" alt="" width="395" height="243" data-wow-delay="0.4s"/>--}}
+            <div class="object object-3"><img class="wow fadeInRight"
+              src="{{url(\App\Services\ImgResize::ImgCopy_3('images/xeol-team/xeol_team_2.png',445,243))}}"
+                                              alt="" width="395" height="243" data-wow-delay="0.4s"/>
             </div>
-            <div class="object object-4"><img class="wow fadeInRight" src="images/xeol-team/xeol_team_6.png" alt="" width="209" height="184" data-wow-delay="0.6s"/>
-{{--            <div class="object object-4"><img class="wow fadeInRight" src="images/image-custom-4-209x184.jpg" alt="" width="209" height="184" data-wow-delay="0.6s"/>--}}
+            <div class="object object-4"><img class="wow fadeInRight"
+              src="{{url(\App\Services\ImgResize::ImgCopy_3('images/xeol-team/xeol_team_6.png',209,254))}}"
+                                              alt="" width="209" height="184" data-wow-delay="0.6s"/>
             </div>
-            <div class="object object-5"><img class="wow fadeInRight" src="images/xeol-team/xeol_team_1.png" alt="" width="395" height="243" data-wow-delay="0.2s"/>
-{{--            <div class="object object-5"><img class="wow fadeInRight" src="images/image-custom-5-395x243.jpg" alt="" width="395" height="243" data-wow-delay="0.2s"/>--}}
+            <div class="object object-5"><img class="wow fadeInRight"
+              src="{{url(\App\Services\ImgResize::ImgCopy_3('images/xeol-team/xeol_team_1.png',455,243))}}"
+                                              alt="" width="395" height="243" data-wow-delay="0.2s"/>
             </div>
-            <div class="object object-6"><img class="wow fadeInRight" src="images/xeol-team/xeol_team_5.png" alt="" width="275" height="184" data-wow-delay="0.4s"/>
-{{--            <div class="object object-6"><img class="wow fadeInRight" src="images/image-custom-6-275x184.jpg" alt="" width="275" height="184" data-wow-delay="0.4s"/>--}}
+            <div class="object object-6"><img class="wow fadeInRight"
+              src="{{url(\App\Services\ImgResize::ImgCopy_3('images/xeol-team/xeol_team_5.png',315,184))}}"
+                                              alt="" width="275" height="184" data-wow-delay="0.4s"/>
             </div>
         </div>
     </div>
