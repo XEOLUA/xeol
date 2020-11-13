@@ -40,7 +40,10 @@
                             </div>
                             <div class="counter-right">
                                 <div class="postfix">+</div>
-                                <div class="title">учасник{{\App\Services\GetSuffixByNumber::get_suffix(count($authors))}} команди</div>
+                                <div class="title">
+                                    {{SuffixService::suf(count($authors),'учасник','учасники','учасників')}}
+                                </div>
+{{--                                    учасник{{\App\Services\GetSuffixByNumber::get_suffix(count($authors))}} команди</div>--}}
                             </div>
                         </div>
                         <ul class="list-marked list-marked-big">

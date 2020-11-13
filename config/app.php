@@ -39,7 +39,8 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => null,
+//        env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -176,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\SuffixServiceProvider::class,
+
     ],
 
     /*
@@ -228,8 +231,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'geturl' => App\Services\GetUrlYoutube::class,
         'youtubeinfo' => App\Services\GetUrlYoutube::class,
-        'get_suffix' => App\Services\GetSuffixByNumber::class,
-        'imgCopy_3' => App\Services\imgResize::class,
+        'Get_suffix' => App\Services\GetSuffixByNumber::class,
+        'imgCopy_3' => App\Services\ImgResize::class,
+        'SuffixService' => App\Facades\SuffixService::class,
     ],
 
 ];

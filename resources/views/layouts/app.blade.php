@@ -1,10 +1,12 @@
 <!-- Price box minimal--><!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 <head>
-    <title>{{ config('app.name', 'XEOL') }} | @yield('title','XEOL')</title>
+    <title>XEOL | @yield('title','XEOL')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+{!! OpenGraph::renderTags() !!}
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166193936-1"></script>
@@ -15,7 +17,7 @@
 
         gtag('config', 'UA-166193936-1');
     </script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href={{url("//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900")}}>
 {{--    <link rel="icon" href="images/favicon.ico" type="image/x-icon">--}}
     <link rel="stylesheet" type="text/css" href="{{url('css/app.css')}}">
@@ -33,9 +35,10 @@
 </main>
 
 <div class="snackbars" id="form-output-global"></div>
-<script src="{{url('js/core.min.js')}}"></script>
-<script src="{{url('js/script.js')}}"></script>
+<script src="{{asset('js/core.min.js')}}"></script>
+<script src="{{asset('js/script.js')}}"></script>
 <script defer src="https://www.google.com/recaptcha/api.js" async></script>
+
 
 <script type="text/javascript">
     $(document).ready(function() {
