@@ -24,7 +24,9 @@
                             <div class="counter">{{count($categories)}}</div>
                         </div>
                         <div class="counter-right">
-                            <div class="postfix">категорій</div>
+                            <div class="postfix">
+                                {{SuffixService::suf(count($categories),'категорія','категорії','категорій')}}
+                                </div>
                             <div class="title">відеоуроків</div>
                         </div>
                     </div>
@@ -40,10 +42,12 @@
                                 <div class="block-2-custom">
                                     <div class="counter-minimal">
                                         <div class="counter-left">
-                                            <div class="counter" style="font-size: 45px">{{count($category['relCategoryToIncategory'])}} уроків</div>
+                                            <div class="counter" style="font-size: 45px">{{count($category['relCategoryToIncategory'])}}</div>
                                         </div>
                                         <div class="counter-right">
-                                            <div class="postfix">урок{{\App\Services\GetSuffixByNumber::get_suffix(count($category['relCategoryToIncategory']))}}</div>
+                                            <div class="postfix">
+                                                {{SuffixService::suf(count($category['relCategoryToIncategory']),'урок','уроки','уроків')}}</div>
+{{--                                                урок{{\App\Services\GetSuffixByNumber::get_suffix(count($category['relCategoryToIncategory']))}}</div>--}}
                                         </div>
                                     </div>
                                 </div>

@@ -121,7 +121,7 @@ class Navigates extends Section implements Initializable
     {
         $form = AdminForm::card()->addBody([
             AdminFormElement::columns()->addColumn([
-                AdminFormElement::text('name', 'Name')
+                AdminFormElement::text('title', 'Title')
                     ->required()
                 ,
                 AdminFormElement::html('<hr>'),

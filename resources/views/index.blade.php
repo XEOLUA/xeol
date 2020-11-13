@@ -1,7 +1,6 @@
-
 @extends('layouts.app')
 
-@section('title','Index')
+@section('title','Головна сторінка')
 
 @section('content')
     @include('home.row_status')
@@ -16,9 +15,5 @@
     @include('home.team')
     @include('home.footer')
     </div>
-{{--    <div class="container marketing">--}}
-{{--        @include('home.workers')--}}
-{{--        @include('home.articles')--}}
-{{--    </div><!-- /.container -->--}}
 
 @endsection

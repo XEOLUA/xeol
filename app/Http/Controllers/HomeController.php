@@ -11,11 +11,14 @@ use App\Lesson;
 use App\Services\GetUrlYoutube;
 use App\Subscribe;
 use Carbon\Carbon;
+use OpenGraph;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\VarDumper\VarDumper;
 use Mail;
+use SuffixService;
+
 
 class HomeController extends Controller
 {
@@ -40,6 +43,19 @@ class HomeController extends Controller
         $lessons = Lesson::with('relLessonToCategory')->orderBy('created_at','desc')->take(10)->get();
         $authors = Author::where('active',1)->orderBy('order')->get();
 
+        $tags = [
+            ['type'=>'title','content'=>'заголовок'],
+            ['type'=>'description','content'=>'опис'],
+
+        ];
+
+        $og = OpenGraph::title('XEOL | Головна')
+            ->type('page')
+            ->sitename('XEOL - Ваш помічник у світі ІТ')
+            ->image(url('/images/og_main.png'))
+            ->description('Завдання з програмування та ІТ, які супроводжуються відеоматеріалами пояснень їх виконання.')
+            ->url();
+
         return view('index', [
             'categories' => $categories,
             'lessons' => $lessons,
@@ -55,11 +71,18 @@ class HomeController extends Controller
 //        $categories = Category::with('relCategoryToLesson')->get();
 
 
+
         $categories = Category::with(['relCategoryToLesson' => function($query)
         {
             $query->orderBy('view', 'desc');
         }])->orderBy('order')->get();
 
+        $og = OpenGraph::title('XEOL | Уроки')
+            ->type('page')
+            ->sitename('XEOL - Ваш помічник у світі ІТ')
+            ->image(url('/images/og_main.png'))
+            ->description('Завдання з програмування та ІТ, які супроводжуються відеоматеріалами пояснень їх виконання.')
+            ->url();
 
         return view('lessons',[
             'categories' => $categories,
@@ -98,6 +121,13 @@ class HomeController extends Controller
             $lesson->save();
         }
 
+        $og = OpenGraph::title('XEOL | '.$lesson->title)
+            ->type('page')
+            ->sitename('XEOL - Ваш помічник у світі ІТ')
+            ->image($lesson->image)
+            ->description($lesson->text)
+            ->url();
+
         return view('lesson',[
             'lesson' => $lesson,
             'lessons' => $lessons_current_category,
@@ -109,6 +139,14 @@ class HomeController extends Controller
         {
             $query->orderBy('view', 'desc');
         }])->where('categories.id',$category_id)->get();
+
+        if(!$categories->isEmpty())
+        $og = OpenGraph::title('XEOL | '.$categories[0]->title)
+            ->type('page')
+            ->sitename('XEOL - Ваш помічник у світі ІТ')
+            ->image($categories[0]->img)
+            ->description($categories[0]->description)
+            ->url();
 
         return view('category',[
             'categories' => $categories,
@@ -146,7 +184,7 @@ class HomeController extends Controller
         $message = "Дякуємо. Повідомлення успішно надіслане.";
 //        dd($message);
         Mail::send(['text'=>'mail'], ['name'=>$feedback->name,'email_fb'=>$feedback->email,'text'=>$feedback->text],function($message){
-            $message->to('savitoleg@ukr.net', 'to PWA admin')->subject("Зворотній зв'язок new.xeol.com.ua");
+            $message->to('savitoleg@ukr.net', 'to admin')->subject("Зворотній зв'язок new.xeol.com.ua");
 
         });
 

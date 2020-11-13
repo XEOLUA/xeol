@@ -70,14 +70,8 @@ class Feedbacks extends Section implements Initializable
                     $query->orderBy('created_at', $direction);
                 })
             ,
-            AdminColumn::boolean('name', 'On'),
-            AdminColumn::text('created_at', 'Created / updated', 'updated_at')
-                ->setWidth('160px')
-                ->setOrderable(function($query, $direction) {
-                    $query->orderBy('updated_at', $direction);
-                })
-                ->setSearchable(false)
-            ,
+            AdminColumn::email('email','E-mail')->setWidth('200px'),
+//            AdminColumn::text('text','Text')->setWidth('200px'),
         ];
 
         $display = AdminDisplay::datatables()
@@ -126,7 +120,8 @@ class Feedbacks extends Section implements Initializable
                 AdminFormElement::html('last AdminFormElement without comma')
             ], 'col-xs-12 col-sm-6 col-md-4 col-lg-4')->addColumn([
                 AdminFormElement::text('id', 'ID')->setReadonly(true),
-                AdminFormElement::html('last AdminFormElement without comma')
+                AdminFormElement::html('last AdminFormElement without comma'),
+                AdminFormElement::textarea('text')
             ], 'col-xs-12 col-sm-6 col-md-8 col-lg-8'),
         ]);
 

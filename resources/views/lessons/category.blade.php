@@ -2,6 +2,7 @@
 <section class="section bg-default section-lined section_list-categories"
          style="border-top: 1px solid silver; padding-top: 30px">
 
+
     @foreach($categories as $item)
     @if(count($item['relCategoryToLesson'])>0)
     <div class="container">

@@ -66,7 +66,7 @@ class Lessons extends Section implements Initializable
 
         $columns = [
             AdminColumn::text('id', '#')->setWidth('50px')->setHtmlAttribute('class', 'text-center'),
-            AdminColumnEditable::text('title')->setLabel('Заголовок'),
+            AdminColumnEditable::text('title')->setLabel('Заголовок')->setWidth('200px'),
             AdminColumn::count('relLessonToIncategory', 'В категоріях')->setWidth('130px')->setHtmlAttribute('align','center'),
             AdminColumn::lists('relLessonToCategory.title', 'Категорії'),
             AdminColumnEditable::text('level','Складність')->setWidth('110px')->setHtmlAttribute('align','center'),
@@ -74,13 +74,6 @@ class Lessons extends Section implements Initializable
             AdminColumnEditable::text('view','Переглядів')->setWidth('110px')->setHtmlAttribute('align','center'),
             AdminColumn::image('image','Зображення')->setWidth('110px'),
             AdminColumnEditable::checkbox('solution',"Пояснення")->setWidth('150px')->setCheckedLabel('Так')->setHtmlAttribute('align','center'),
-            AdminColumn::text('created_at', 'Created / updated', 'updated_at')
-                ->setWidth('160px')
-                ->setOrderable(function($query, $direction) {
-                    $query->orderBy('updated_at', $direction);
-                })
-                ->setSearchable(false)
-            ,
         ];
 
         $display = AdminDisplay::datatables()
