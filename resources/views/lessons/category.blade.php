@@ -1,8 +1,6 @@
 <!-- Our awards-->
 <section class="section bg-default section-lined section_list-categories"
          style="border-top: 1px solid silver; padding-top: 30px">
-
-
     @foreach($categories as $item)
     @if(count($item['relCategoryToLesson'])>0)
     <div class="container">
@@ -29,6 +27,21 @@
                 </div>
             </div>
         </div>
+{{--        <div>--}}
+
+{{--            <select class="js-example-basic-multiple" name="states[]" multiple="multiple">--}}
+{{--                <option value="AL">Alabama</option>--}}
+{{--                <option value="WY">Wyoming</option>--}}
+{{--            </select>--}}
+
+{{--            select 2--}}
+{{--            @if($item->tags)--}}
+{{--                @foreach($item->getTags() as $tag)--}}
+{{--                    {{$tag}}--}}
+{{--                @endforeach--}}
+{{--            @endif--}}
+{{--        </div>--}}
+
         <div class="box-border-wrap-1 wow fadeInUp" data-wow-delay="0.2s">
             <div class="row lesson_row">
                 @foreach($item['relCategoryToLesson'] as $lesson)

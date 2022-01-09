@@ -22,6 +22,8 @@
 {{--    <link rel="icon" href="images/favicon.ico" type="image/x-icon">--}}
     <link rel="stylesheet" type="text/css" href="{{url('css/app.css')}}">
     <link rel="icon" href="{{url('images/favicon.ico?v=2')}}" type={{url("image/x-icon")}}>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 {{--    <link rel="stylesheet" href="{{url('css/bootstrap.css')}}">--}}
 {{--    <link rel="stylesheet" href={{url("fonts/fonts.css")}}>--}}
