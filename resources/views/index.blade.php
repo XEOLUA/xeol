@@ -11,7 +11,7 @@
     @include('home.project')
     @include('home.award')
     @include('home.work')
-    @include('home.swiper')
+{{--    @include('home.swiper')--}}
     @include('home.team')
     @include('home.footer')
     </div>

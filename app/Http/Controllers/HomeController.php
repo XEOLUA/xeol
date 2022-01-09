@@ -46,7 +46,6 @@ class HomeController extends Controller
         $tags = [
             ['type'=>'title','content'=>'заголовок'],
             ['type'=>'description','content'=>'опис'],
-
         ];
 
         $og = OpenGraph::title('XEOL | Головна')
@@ -144,7 +143,7 @@ class HomeController extends Controller
         $og = OpenGraph::title('XEOL | '.$categories[0]->title)
             ->type('page')
             ->sitename('XEOL - Ваш помічник у світі ІТ')
-            ->image($categories[0]->img)
+            ->image($categories[0]->img ?? '')
             ->description($categories[0]->description)
             ->url();
 
