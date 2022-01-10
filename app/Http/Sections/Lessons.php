@@ -9,6 +9,9 @@ use AdminForm;
 use AdminFormElement;
 use AdminColumnFilter;
 use App\Category;
+use App\Http\Controllers\Admin\LessonController;
+use App\Lesson;
+use App\Services\TagsGenerate;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Form\Columns\Column;
@@ -115,6 +118,7 @@ class Lessons extends Section implements Initializable
             AdminFormElement::columns()->addColumn([
                 AdminFormElement::text('title', 'Назва')->required(),
                 AdminFormElement::ckeditor('text', 'Зміст'),
+               AdminFormElement::text('tags', 'Tags'),
                 AdminFormElement::columns()->addColumn([
                     AdminFormElement::image('image', 'Зображення'),
                 ],'col-xs-8 col-sm-6 col-md-8 col-lg-4' )->addColumn([
@@ -149,6 +153,10 @@ class Lessons extends Section implements Initializable
             'save_and_create'  => new SaveAndCreate(),
             'cancel'  => (new Cancel()),
         ]);
+
+        $lesson = Lesson::where('id',$id)->first();
+        $tagsGenerator = new TagsGenerate();
+        $tagsGenerator->generateByCategory($lesson->relLessonToCategory()->first() ?? []);
 
         return $form;
     }

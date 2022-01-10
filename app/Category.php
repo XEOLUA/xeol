@@ -46,4 +46,22 @@ class Category extends Authenticatable
     {
         return 'order';
     }
+
+    /**
+     * @return array
+     */
+    public function getTags(): array
+    {
+        return explode(",",$this->tags);
+    }
+
+    /**
+     * @param array $tags
+     *
+     * @return void
+     */
+    public function setTags(array $tags): void
+    {
+        $this->tags = implode(",",$tags);
+    }
 }

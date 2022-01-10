@@ -27,9 +27,9 @@
         <div class="swiper-container swiper-slider swiper-slider-1" data-next=".custom-swiper-button-next" data-prev=".custom-swiper-button-prev" data-loop="true">
             <div class="swiper-wrapper">
                 @foreach($lessons as $lesson)
-                    <a class="swiper-slide" href="/lesson/{{$lesson->id}}/category/{{$lesson['relLessonToCategory'][0]->id}}">
+                    <a class="swiper-slide" href="/lesson/{{$lesson->id}}/category/{{$lesson->relLessonToCategory->first()->id ?? ''}}">
                     <div style="width: 100%; padding: 5px" class="swiper-slide" data-slide-bg="{{url($lesson->image ?? 'images/home-1-585x541.jpg')}}">
-                            <div style="color:#92d050; background-color: #222222; padding: 3px; font-weight: 400; font-size:22px">{{$lesson['relLessonToCategory'][0]->title}}</div>
+                            <div style="color:#92d050; background-color: #222222; padding: 3px; font-weight: 400; font-size:22px">{{$lesson->relLessonToCategory->first()->title ?? ''}}</div>
                             <div style="color:#ffffff; background-color: #262626; padding: 5px">{{$lesson->title}}</div>
                     </div>
                     </a>

@@ -10,6 +10,7 @@ class Lesson extends Authenticatable
 {
     protected $table = 'lessons';
     protected $fillable = ['title'];
+
     public function relLessonToIncategory()
     {
         return $this->hasMany('App\Incategory', 'lesson_id', 'id');
