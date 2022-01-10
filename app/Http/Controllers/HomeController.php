@@ -6,11 +6,14 @@ use App\Author;
 use App\Category;
 use App\Feedback;
 use App\Http\Requests\FeedbackRequest;
+use App\Http\Sections\Lessons;
+use App\Incategory;
 use App\Lesson;
 use App\Services\GetUrlYoutube;
 use App\Subscribe;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Mail;
@@ -131,22 +134,41 @@ class HomeController extends Controller
         ]);
     }
 
-    public function category($category_id)
+    public function category($category_id, Request $request)
     {
-        $categories = Category::with(['relCategoryToLesson' => function ($query) {
+        $lessons = Incategory::with(['relToLesson','relToCategory'], function  ($query){
             $query->orderBy('view', 'desc');
-        }])->where('categories.id', $category_id)->get();
+        })->join('lessons','lessons.id','=','incategories.lesson_id')
+            ->where('incategories.category_id',$category_id);
 
-        if (!$categories->isEmpty())
-            $og = OpenGraph::title('XEOL | ' . $categories[0]->title)
+        if(isset($request['tags']))
+        {
+            $tags = explode(",",$request['tags']);
+            $lessons->where(function($query)use($tags){
+                foreach ($tags as $tag){
+                    if($tag!=""){
+                    $query->orWhere('lessons.tags', 'like', '%' . $tag . '%');
+                }
+                }
+            });
+        }
+
+        $category = Category::find($category_id);
+        $lessons = $lessons->get();
+
+        if (!$lessons->isEmpty())
+            $og = OpenGraph::title('XEOL | ' . $category->title)
                 ->type('page')
                 ->sitename('XEOL - Ваш помічник у світі ІТ')
-                ->image($categories[0]->img ?? '')
-                ->description($categories[0]->description)
+                ->image($category->img ?? '')
+                ->description($category->description)
                 ->url();
 
         return view('category', [
-            'categories' => $categories,
+            'category' => $category,
+            'lessons' => $lessons,
+            'tags' => $request['tags'] ? explode(",",$request['tags']) : [],
+            'stringTags' => $request['tags'] ?? ''
         ]);
     }
 

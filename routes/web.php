@@ -23,6 +23,7 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('/lessons', 'HomeController@lessons')->name('lessons');
 Route::get('/lesson/{lesson_id}/category/{category_id}', 'HomeController@lesson')->name('lesson');
 Route::get('/category/{category_id}', 'HomeController@category')->name('category');
+Route::post('/category/{category_id}', 'HomeController@category')->name('category');
 Route::post('/subscribe', 'HomeController@subscribe')->name('subscribe');
 Route::post('/addfeedback', 'HomeController@addfeedback')->name('addfeedback');
 Route::get('/feedback', 'HomeController@feedback')->name('feedback');
