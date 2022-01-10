@@ -77,6 +77,7 @@ class Lessons extends Section implements Initializable
             AdminColumnEditable::text('view','Переглядів')->setWidth('110px')->setHtmlAttribute('align','center'),
             AdminColumn::image('image','Зображення')->setWidth('110px'),
             AdminColumnEditable::checkbox('solution',"Пояснення")->setWidth('150px')->setCheckedLabel('Так')->setHtmlAttribute('align','center'),
+            AdminColumnEditable::text('tags',"Tags")->setLabel('Заголовок')->setWidth('200px'),
         ];
 
         $display = AdminDisplay::datatables()
