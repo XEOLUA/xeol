@@ -64,4 +64,9 @@ class Category extends Authenticatable
     {
         $this->tags = implode(",",$tags);
     }
+
+    public function lessons()
+    {
+        return $this->belongsToMany(Lesson::class,'incategories','category_id','lesson_id');
+    }
 }

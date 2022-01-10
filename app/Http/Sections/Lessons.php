@@ -154,10 +154,13 @@ class Lessons extends Section implements Initializable
             'cancel'  => (new Cancel()),
         ]);
 
-        $lesson = Lesson::where('id',$id)->first();
-        $tagsGenerator = new TagsGenerate();
-        $tagsGenerator->generateByCategory($lesson->relLessonToCategory()->first() ?? []);
+        $lesson = Lesson::with('categories')->where('id',$id)->first();
 
+        $tagsGenerator = new TagsGenerate();
+
+        foreach ($lesson->categories as $category){
+            $tagsGenerator->generateByCategory($category);
+        }
         return $form;
     }
 

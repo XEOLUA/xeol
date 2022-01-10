@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Category;
+use App\Lesson;
 
 class TagsGenerate
 {
@@ -13,8 +14,11 @@ class TagsGenerate
      */
     public function generateByCategory(Category $category)
     {
+
+        $lessons = $category->lessons()->get();
+
         $tags = [];
-        foreach ($category->first()->relCategoryToLesson as $lesson) {
+        foreach ($lessons as $lesson) {
             foreach (explode(",", $lesson->tags) as $tag) {
                 if (!empty($tag)) {
                     $tags[] = trim($tag, " \n\r\t\v\x00");

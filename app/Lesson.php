@@ -20,4 +20,9 @@ class Lesson extends Authenticatable
     {
         return $this->belongsToMany('App\Category','incategories');
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class,'incategories','lesson_id','category_id');
+    }
 }
