@@ -154,7 +154,7 @@ class HomeController extends Controller
         }
 
         $category = Category::find($category_id);
-        $lessons = $lessons->get();
+        $lessons = $lessons->orderBy('view','DESC')->get();
 
         if (!$lessons->isEmpty())
             $og = OpenGraph::title('XEOL | ' . $category->title)
