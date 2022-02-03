@@ -157,11 +157,14 @@ class Lessons extends Section implements Initializable
 
         $lesson = Lesson::with('categories')->where('id',$id)->first();
 
-        $tagsGenerator = new TagsGenerate();
+        if($lesson){
+            $tagsGenerator = new TagsGenerate();
 
-        foreach ($lesson->categories as $category){
-            $tagsGenerator->generateByCategory($category);
+            foreach ($lesson->categories as $category){
+                $tagsGenerator->generateByCategory($category);
+            }
         }
+
         return $form;
     }
 
