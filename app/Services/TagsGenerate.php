@@ -27,7 +27,7 @@ class TagsGenerate
         }
 
         $tags = array_unique($tags);
-
+        sort($tags);
         $category->setTags($tags);
         $category->save();
     }

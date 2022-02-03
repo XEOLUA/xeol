@@ -26,15 +26,16 @@
                 </div>
             </div>
         </div>
-        <form action="{{route('category',['id'=>$category->id])}}" method="POST">
+        <input type="checkbox" value="0" id="show-tags" @if($tags) checked @endif> <label for="show-tags" class="show-tags-label">Show tags</label>
+        <form action="{{route('category',['id'=>$category->id])}}" method="POST" class="tags @if($tags) showed @else hidden @endif">
             <input type="hidden" id="tags" name="tags" value="{{$stringTags ?? ''}}">
         @csrf
-            Tags:
             @if($category->tags)
                 @foreach($category->getTags() as $tag)
-                    #<span class="tag-item
-                    @if(in_array($tag,$tags)) tag-active @else tag-no-active @endif"
-                    data-sel="@if(in_array($tag,$tags)){{'true'}}@else{{'false'}}@endif">{{$tag}}</span>
+                    <span class="tag-item-main @if(in_array($tag,$tags)) tag-active @else tag-no-active @endif" data-sel="@if(in_array($tag,$tags)){{'true'}}@else{{'false'}}@endif">
+                        #<span class="tag-item">{{$tag}}</span>
+                    </span>
+
                 @endforeach
             @endif
             <button>filter</button>
