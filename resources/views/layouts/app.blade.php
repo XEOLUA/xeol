@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    <meta name="google-site-verification" content="ASujqion-MyTK5RRuoZU8gZvOJ_zovkxbAuex-16Y58" />
 {!! OpenGraph::renderTags() !!}
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
